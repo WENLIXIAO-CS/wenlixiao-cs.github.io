@@ -429,6 +429,57 @@
                   </td>
                 </tr>
 
+                <!-- project: Wireless FL -->
+                <tr
+                  onmouseout="wirelessfl_stop()"
+                  onmouseover="wirelessfl_start()"
+                >
+                  <td style="padding: 20px; width: 25%; vertical-align: bottom">
+                    <div class="one">
+                      <div class="two" id="wirelessfl_image">
+                        <img src="images/wirelessfl.png" width="180" align="bottom" />
+                      </div>
+                      <img src="images/wirelessfl.png" width="180" align="bottom" />
+                    </div>
+                    <script type="text/javascript">
+                      function wirelessfl_start() {
+                        document.getElementById(
+                          "wirelessfl_image"
+                        ).style.opacity = "1";
+                      }
+
+                      function wirelessfl_stop() {
+                        document.getElementById(
+                          "wirelessfl_image"
+                        ).style.opacity = "0";
+                      }
+                      adapgivefl_stop();
+                    </script>
+                  </td>
+                  <td style="padding: 20px; width: 75%; vertical-align: middle">
+                    <a href="">
+                      <papertitle
+                        >Adaptive Heterogeneous Client Sampling for Federated Learning over Wireless Networks
+                      </papertitle>
+                    </a>
+                    <br />
+
+                    Bing Luo, <strong>Wenli Xiao</strong>, Shiqiang Wang, Jianwei Huang, Leandros Tassiulas
+                    <br />
+                    <em
+                      >IEEE Transactions on Mobile Computing</em
+                    >
+                    <br />
+                    <!-- <a href="">project page</a> / -->
+                    <a href="https://arxiv.org/pdf/2404.13804">arXiv</a> /
+                    <a href="https://github.com/WENLIXIAO-CS/WirelessFL">code</a>
+                    <p></p>
+                    <p>
+                      TL;DR: This paper design an adaptive client sampling algorithm for FL over wireless networks that tackles both system and statistical heterogeneity to minimize the wall-clock convergence time.
+                    </p>
+                  </td>
+                </tr>
+
                 <!-- project: Adaptive Sampling FL -->
                 <tr
                   onmouseout="adaptivefl_stop()"
@@ -472,7 +523,7 @@
                     >
                     <br />
                     <!-- <a href="">project page</a> / -->
-                    <a href="https://arxiv.org/abs/2112.11256">arXiv</a>
+                    <a href="https://arxiv.org/abs/2112.11256">arXiv</a> /
                     <p></p>
                     <p>
                       This paper presents an adaptive client sampling algorithm
