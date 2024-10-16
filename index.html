@@ -319,9 +319,60 @@
                 margin-left: auto;
               "
             >
+              <!-- project: AnyCar -->
+              <tr onmouseout="anycar_stop()" onmouseover="anycar_start()"  bgcolor="#ffffd0">
+                <td style="padding: 20px; width: 25%; vertical-align: bottom">
+                  <div class="one">
+                    <div class="two" id="anycar_image">
+                        <!-- <source src="images/anycar.gif" type="video/mp4" /> -->
+                      <img src="images/anycar.gif" width="180" align="bottom" />
+                      </video>
+                    </div>
+                      <img src="images/anycar.gif" width="180" align="bottom" />
+                  </div>
+                  <script type="text/javascript">
+                    function anycar_start() {
+                      document.getElementById("anycar_image").style.opacity =
+                        "1";
+                    }
+
+                    function anycar_stop() {
+                      document.getElementById("anycar_image").style.opacity =
+                        "0";
+                    }
+                    anycar_stop();
+                  </script>
+                </td>
+                <td style="padding: 20px; width: 75%; vertical-align: middle">
+                  <a href="https://lecar-lab.github.io/anycar/">
+                    <papertitle
+                      >AnyCar to Anywhere: Learning Universal Dynamics Model for Agile and Adaptive Mobility</papertitle
+                    >
+                  </a>
+                  <br />
+
+                  <strong>Wenli Xiao*</strong>, Haoru Xue*, Tony Tao, Dvij Kalaria, John Dolan, Guanya Shi
+                  <br />
+                  <em
+                    >In Submission</em
+                  > 
+                  
+                  <br />
+                  <!-- <a href="">project page</a> / -->
+                  <a href="https://arxiv.org/abs/2409.15783">arXiv</a> /
+                  <a href="https://lecar-lab.github.io/anycar/">website</a> /
+                  <!-- <a href="https://www.youtube.com/watch?v=PkyRzlRQVbE">video</a> / -->
+                  <a href=""https://github.com/LeCAR-Lab/anycar">code</a> /
+                  <!-- <a href="https://x.com/_wenlixiao/status/1790909857496961300">twitter</a> -->
+                  <p></p>
+                  <p>
+                      TL;DR: AnyCar is a generalist vehicle dynamics model for agile mobility. It can adapt to various cars, tasks, and envs via in-context adaptation, outperforming well-tuned generalist models up to 54%.
+                  </p>
+                </td>
+              </tr>
 
               <!-- project: SafeDPA -->
-              <tr onmouseout="safeDPA_stop()" onmouseover="safeDPA_start()"  bgcolor="#ffffd0">
+              <tr onmouseout="safeDPA_stop()" onmouseover="safeDPA_start()">
                 <td style="padding: 20px; width: 25%; vertical-align: bottom">
                   <div class="one">
                     <div class="two" id="safeDPA_image">
@@ -374,7 +425,7 @@
 
 
                 <!-- project: ABS -->
-                <tr onmouseout="abs_stop()" onmouseover="abs_start()">
+                <tr onmouseout="abs_stop()" onmouseover="abs_start()" bgcolor="#ffffd0">
                   <td style="padding: 20px; width: 25%; vertical-align: bottom">
                     <div class="one">
                       <div class="two" id="abs_image">
