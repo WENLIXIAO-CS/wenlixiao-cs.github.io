@@ -71,17 +71,18 @@
                     </p>
                   </td>
                   <td style="padding: 2.5%; width: 40%; max-width: 40%">
-                    <a href="images/wenli-h1.jpeg"
+                    <a href="images/wenli-ny.jpeg"
                       ><img
                         style="width: 100%; max-width: 100%"
                         alt="profile photo"
-                        src="images/wenli-h1.jpeg"
+                        src="images/wenli-ny.jpeg"
                         class="hoverZoomLink"
                     /></a>
                   </td>
                 </tr>
               </tbody>
             </table>
+            
             <table
               style="
                 width: 100%;
@@ -92,12 +93,160 @@
                 margin-left: auto;
               "
             >
+              
               <tbody>
                 <tr>
                   <td
                     style="padding: 20px; width: 100%; vertical-align: middle"
                   >
-                    <heading>Research - Humanoid Whole-Body Control</heading>
+                    <heading>Foundation Model for Robotics</heading>
+                    <p>
+                      <!-- My ultimate goal is to build deployable robotic systems and facilitate robots working in our daily lives! <br>
+                      My research focuses on using data-driven approaches and combining large-scale (Reinforcement) Learning-based methods with control-theoretical frameworks to tackle: <b>1) safety</b>, <b>2) agility</b>, and <b>3) adaptivity</b>, to make robots more deployable.
+                      I am passionate about real robots and have extensive experience with 1/10 Racing Cars, quadrupedal robots, and <b>Humanoids</b>! (*equal contribution) -->
+                    </p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+
+            <table
+              style="
+                width: 100%;
+                border: 0px;
+                border-spacing: 0px;
+                border-collapse: separate;
+                margin-right: auto;
+                margin-left: auto;
+              "
+            >
+
+            <!-- project: HOVER -->
+            <tr onmouseout="hover_stop()" onmouseover="hover_start()"  bgcolor="#ffffd0">
+              <td style="padding: 20px; width: 25%; vertical-align: bottom">
+                <div class="one">
+                  <div class="two" id="hover_image">
+                      <!-- <source src="images/hover.gif" type="video/mp4" /> -->
+                    <img src="images/hover.gif" width="180" align="bottom" />
+                    </video>
+                  </div>
+                    <img src="images/hover.gif" width="180" align="bottom" />
+                </div>
+                <script type="text/javascript">
+                  function hover_start() {
+                    document.getElementById("hover_image").style.opacity =
+                      "1";
+                  }
+
+                  function hover_stop() {
+                    document.getElementById("hover_image").style.opacity =
+                      "0";
+                  }
+                  hover_stop();
+                </script>
+              </td>
+              <td style="padding: 20px; width: 75%; vertical-align: middle">
+                <a href="https://hover-versatile-humanoid.github.io/">
+                  <papertitle
+                    >HOVER: Versatile Neural Whole-Body Controller for Humanoid Robots</papertitle
+                  >
+                </a>
+                <br />
+                Tairan He*, <strong>Wenli Xiao*</strong>, Toru Lin, Zhengyi Luo, Zhengjia Xu, Zhenyu Jiang, Jan Kautz, Changliu Liu, Guanya Shi, Xiaolong Wang, Linxi "Jim" Fan†, Yuke Zhu†
+                <br />
+                <em
+                  >In Submission</em
+                > 
+                
+                <br />
+                <!-- <a href="">project page</a> / -->
+                <a href="https://arxiv.org/abs/2410.21229">arXiv</a> /
+                <a href="https://hover-versatile-humanoid.github.io/">website</a> /
+                <a href="https://x.com/DrJimFan/status/1851643431803830551">Twitter</a>
+                <p></p>
+                <p>
+                    TL;DR: HOVER is a 1.5M-parameter neural network to control the body of a humanoid robot. It takes a lot of subconscious processing for us humans to walk, maintain balance, and maneuver our arms and legs into desired positions. We capture this “subconsciousness” in HOVER, a single model that learns how to coordinate the motors of a humanoid robot to support locomotion and manipulation.
+                </p>
+              </td>
+            </tr>
+
+              <!-- project: AnyCar -->
+              <tr onmouseout="anycar_stop()" onmouseover="anycar_start()"  bgcolor="#ffffd0">
+                <td style="padding: 20px; width: 25%; vertical-align: bottom">
+                  <div class="one">
+                    <div class="two" id="anycar_image">
+                        <!-- <source src="images/anycar.gif" type="video/mp4" /> -->
+                      <img src="images/anycar.gif" width="180" align="bottom" />
+                      </video>
+                    </div>
+                      <img src="images/anycar.gif" width="180" align="bottom" />
+                  </div>
+                  <script type="text/javascript">
+                    function anycar_start() {
+                      document.getElementById("anycar_image").style.opacity =
+                        "1";
+                    }
+
+                    function anycar_stop() {
+                      document.getElementById("anycar_image").style.opacity =
+                        "0";
+                    }
+                    anycar_stop();
+                  </script>
+                </td>
+                <td style="padding: 20px; width: 75%; vertical-align: middle">
+                  <a href="https://lecar-lab.github.io/anycar/">
+                    <papertitle
+                      >AnyCar to Anywhere: Learning Universal Dynamics Model for Agile and Adaptive Mobility</papertitle
+                    >
+                  </a>
+                  <br />
+
+                  <strong>Wenli Xiao*</strong>, Haoru Xue*, Tony Tao, Dvij Kalaria, John Dolan, Guanya Shi
+                  <br />
+                  <em
+                    >In Submission</em
+                  > 
+                  
+                  <br />
+                  <!-- <a href="">project page</a> / -->
+                  <a href="https://arxiv.org/abs/2409.15783">arXiv</a> /
+                  <a href="https://lecar-lab.github.io/anycar/">website</a> /
+                  <!-- <a href="https://www.youtube.com/watch?v=PkyRzlRQVbE">video</a> / -->
+                  <a href=""https://github.com/LeCAR-Lab/anycar">code</a> /
+                  <a href="https://x.com/_wenlixiao/status/1846582020585275565">Twitter</a>
+                  <p></p>
+                  <p>
+                      TL;DR: AnyCar is a generalist vehicle dynamics model for agile mobility. It can adapt to various cars, tasks, and envs via in-context adaptation, outperforming well-tuned generalist models up to 54%.
+                  </p>
+                </td>
+              </tr>
+
+
+              </tbody>
+            </table>
+            
+
+
+
+            <table
+              style="
+                width: 100%;
+                border: 0px;
+                border-spacing: 0px;
+                border-collapse: separate;
+                margin-right: auto;
+                margin-left: auto;
+              "
+            >
+              
+              <tbody>
+                <tr>
+                  <td
+                    style="padding: 20px; width: 100%; vertical-align: middle"
+                  >
+                    <heading>Humanoid Whole-Body Control</heading>
                     <p>
                       <!-- My ultimate goal is to build deployable robotic systems and facilitate robots working in our daily lives! <br>
                       My research focuses on using data-driven approaches and combining large-scale (Reinforcement) Learning-based methods with control-theoretical frameworks to tackle: <b>1) safety</b>, <b>2) agility</b>, and <b>3) adaptivity</b>, to make robots more deployable.
@@ -153,7 +302,7 @@
                   Chong Zhang*, <strong>Wenli Xiao*</strong>, Tairan He, Guanya Shi
                   <br />
                   <em
-                    >CoRL 2024<br>RSS 2024, Task Specification for General-Purpose Intelligent Robots Workshop</em
+                    >CoRL 2024 <span style="color: red"><strong> (Spotlight) </strong></span><br>RSS 2024, Task Specification for General-Purpose Intelligent Robots Workshop</em
                   > 
                   
                   <br />
@@ -298,7 +447,7 @@
                   <td
                     style="padding: 20px; width: 100%; vertical-align: middle"
                   >
-                    <heading>Research - Agile Robot Mobility</heading>
+                    <heading>Agile Robot Mobility</heading>
                     <p>
                       <!-- My ultimate goal is to build deployable robotic systems and facilitate robots working in our daily lives! <br> -->
                       <!-- My research focuses on using data-driven approaches and combining large-scale (Reinforcement) Learning-based methods with control-theoretical frameworks to tackle: <b>1) safety</b>, <b>2) agility</b>, and <b>3) adaptivity</b>, to make robots more deployable. -->
@@ -319,57 +468,6 @@
                 margin-left: auto;
               "
             >
-              <!-- project: AnyCar -->
-              <tr onmouseout="anycar_stop()" onmouseover="anycar_start()"  bgcolor="#ffffd0">
-                <td style="padding: 20px; width: 25%; vertical-align: bottom">
-                  <div class="one">
-                    <div class="two" id="anycar_image">
-                        <!-- <source src="images/anycar.gif" type="video/mp4" /> -->
-                      <img src="images/anycar.gif" width="180" align="bottom" />
-                      </video>
-                    </div>
-                      <img src="images/anycar.gif" width="180" align="bottom" />
-                  </div>
-                  <script type="text/javascript">
-                    function anycar_start() {
-                      document.getElementById("anycar_image").style.opacity =
-                        "1";
-                    }
-
-                    function anycar_stop() {
-                      document.getElementById("anycar_image").style.opacity =
-                        "0";
-                    }
-                    anycar_stop();
-                  </script>
-                </td>
-                <td style="padding: 20px; width: 75%; vertical-align: middle">
-                  <a href="https://lecar-lab.github.io/anycar/">
-                    <papertitle
-                      >AnyCar to Anywhere: Learning Universal Dynamics Model for Agile and Adaptive Mobility</papertitle
-                    >
-                  </a>
-                  <br />
-
-                  <strong>Wenli Xiao*</strong>, Haoru Xue*, Tony Tao, Dvij Kalaria, John Dolan, Guanya Shi
-                  <br />
-                  <em
-                    >In Submission</em
-                  > 
-                  
-                  <br />
-                  <!-- <a href="">project page</a> / -->
-                  <a href="https://arxiv.org/abs/2409.15783">arXiv</a> /
-                  <a href="https://lecar-lab.github.io/anycar/">website</a> /
-                  <!-- <a href="https://www.youtube.com/watch?v=PkyRzlRQVbE">video</a> / -->
-                  <a href=""https://github.com/LeCAR-Lab/anycar">code</a> /
-                  <!-- <a href="https://x.com/_wenlixiao/status/1790909857496961300">twitter</a> -->
-                  <p></p>
-                  <p>
-                      TL;DR: AnyCar is a generalist vehicle dynamics model for agile mobility. It can adapt to various cars, tasks, and envs via in-context adaptation, outperforming well-tuned generalist models up to 54%.
-                  </p>
-                </td>
-              </tr>
 
               <!-- project: SafeDPA -->
               <tr onmouseout="safeDPA_stop()" onmouseover="safeDPA_start()">
