@@ -215,7 +215,7 @@ export default function Home() {
                     title="Research Intern"
                     company="NVIDIA GEAR Lab"
                     period="2024 - Present"
-                    description="Working with Dr. Jim Fan and Prof. Yuke Zhu on foundation model for humanoids."
+                    description="Working on foundation model for humanoids."
                     index={0}
                     totalCards={4}
                     icon="/images/nvidia.png"
@@ -225,7 +225,7 @@ export default function Home() {
                     title="Robotics Institute Summer Scholar (RISS)"
                     company="Carnegie Mellon University"
                     period="June 2022 - Aug 2023"
-                    description="Research Intern working with Prof. John Dolan and Yiwei Lyu."
+                    description=""
                     index={1}
                     totalCards={4}
                     icon="/images/cmu-logo.jpg"
@@ -235,7 +235,7 @@ export default function Home() {
                     title="Research Intern"
                     company="RISE Lab, UC Berkeley"
                     period="March 2022 - May 2022"
-                    description="Working with Prof. Joseph E. Gonzalez and Tianjun Zhang."
+                    description=""
                     index={2}
                     totalCards={4}
                     icon="/images/berkeley-logo.png"
@@ -245,7 +245,7 @@ export default function Home() {
                     title="Research Intern"
                     company="NCEL Lab, Shenzhen AIRS"
                     period="Aug 2020 - March 2022"
-                    description="Working with Prof. Jianwei Huang and Prof. Bing Luo."
+                    description=""
                     index={3}
                     totalCards={4}
                     icon="/images/airs-logo.jpeg"
