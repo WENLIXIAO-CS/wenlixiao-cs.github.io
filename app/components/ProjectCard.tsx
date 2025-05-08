@@ -4,7 +4,6 @@ interface ProjectCardProps {
   title: string;
   image: string;
   points: string[];
-  link?: string;
   imageType?: 'gif' | 'static';
   arxiv?: string;
   website?: string;
@@ -18,7 +17,6 @@ export default function ProjectCard({
   title, 
   image, 
   points, 
-  link, 
   imageType = 'static',
   arxiv,
   website,
@@ -31,9 +29,11 @@ export default function ProjectCard({
     <div className="flex flex-col md:flex-row items-start bg-white p-6 rounded-3xl shadow-md max-w-6xl mx-auto space-y-6 md:space-y-0 md:space-x-10 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:bg-gray-50 group">
       <div className="w-full md:w-[500px] h-[300px] relative rounded-2xl overflow-hidden bg-gray-100 transition-transform duration-300 group-hover:scale-[1.02]">
         {imageType === 'gif' ? (
-          <img
+          <Image
             src={image}
             alt={title}
+            width={500}
+            height={300}
             className="w-full h-full object-cover"
           />
         ) : (

@@ -27,6 +27,7 @@ export default function EducationCard({
   const distanceFromMiddle = Math.abs(index - middleIndex);
   
   useEffect(() => {
+    const currentRef = cardRef.current;
     const observer = new IntersectionObserver(
       ([entry]) => {
         setIsInView(entry.isIntersecting);
@@ -37,13 +38,13 @@ export default function EducationCard({
       }
     );
 
-    if (cardRef.current) {
-      observer.observe(cardRef.current);
+    if (currentRef) {
+      observer.observe(currentRef);
     }
 
     return () => {
-      if (cardRef.current) {
-        observer.unobserve(cardRef.current);
+      if (currentRef) {
+        observer.unobserve(currentRef);
       }
     };
   }, []);
