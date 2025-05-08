@@ -9,7 +9,6 @@ interface EducationCardProps {
   period: string;
   advisor?: string;
   index: number;
-  totalCards: number;
   icon: string;
 }
 
@@ -18,9 +17,8 @@ export default function EducationCard({
   degree, 
   period, 
   advisor,
-  index, 
-  totalCards,
-  icon 
+  index,
+  icon
 }: EducationCardProps) {
   const cardRef = useRef<HTMLDivElement>(null);
 
@@ -50,13 +48,13 @@ export default function EducationCard({
   return (
     <div
       ref={cardRef}
-      className="bg-white dark:bg-[#111] rounded-3xl p-8 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 w-[400px] opacity-0 translate-y-4"
+      className="w-[400px] bg-white p-6 rounded-3xl shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1 opacity-0 translate-y-4"
       style={{
         transitionDelay: `${index * 100}ms`,
       }}
     >
-      <div className="flex items-start space-x-4">
-        <div className="flex-shrink-0 w-12 h-12 relative rounded-xl overflow-hidden">
+      <div className="flex items-start gap-4">
+        <div className="w-12 h-12 relative rounded-xl overflow-hidden flex-shrink-0">
           <Image
             src={icon}
             alt={school}
@@ -64,18 +62,18 @@ export default function EducationCard({
             className="object-cover"
           />
         </div>
-        <div className="flex-1">
-          <h3 className="text-xl font-bold text-gray-900 dark:text-white">{school}</h3>
-          <p className="text-gray-600 dark:text-gray-300 mt-1">{degree}</p>
-          <p className="text-gray-500 dark:text-gray-400 text-sm mt-1">{period}</p>
+        <div>
+          <h3 className="text-lg font-semibold text-gray-900">{school}</h3>
+          <p className="text-gray-600">{degree}</p>
+          <p className="text-gray-500 text-sm">{period}</p>
           {advisor && (
-            <div className="mt-4">
-              <p className="text-sm text-gray-500 dark:text-gray-400">Advisor:</p>
-              <div className="text-sm text-gray-600 dark:text-gray-300 mt-1">
-                {advisor.split('\\n').map((name, index) => (
-                  <div key={index} className="flex items-center mt-1">
-                    <div className="w-1.5 h-1.5 rounded-full bg-blue-500 mr-2 flex-shrink-0"></div>
-                    <p>{name}</p>
+            <div className="mt-2">
+              <p className="text-sm text-gray-500">Advisor:</p>
+              <div className="text-sm text-gray-600">
+                {advisor.split('\n').map((name, index) => (
+                  <div key={index} className="flex items-center gap-1.5">
+                    <div className="w-1.5 h-1.5 rounded-full bg-blue-500 flex-shrink-0"></div>
+                    {name}
                   </div>
                 ))}
               </div>

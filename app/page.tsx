@@ -284,7 +284,6 @@ export default function Home() {
                     period="Sep 2023 - May 2025"
                     advisor="Prof. Guanya Shi\nProf. John Dolan"
                     index={0}
-                    totalCards={3}
                     icon="/images/cmu-logo.jpg"
                   />
                   <EducationCard
@@ -292,7 +291,6 @@ export default function Home() {
                     degree="Visiting in EECS"
                     period="Jan 2022 - May 2022"
                     index={1}
-                    totalCards={3}
                     icon="/images/berkeley-logo.png"
                   />
                   <EducationCard
@@ -300,7 +298,6 @@ export default function Home() {
                     degree="B.S. in Electric Information Engineering"
                     period="Sep 2019 - Jun 2023"
                     index={2}
-                    totalCards={3}
                     icon="/images/cuhksz-logo.png"
                   />
                 </div>
@@ -322,8 +319,6 @@ export default function Home() {
                       "IEEE Robotics and Automation Letters (RA-L)",
                       "Conference on Robot Learning (CoRL)"
                     ]}
-                    index={0}
-                    totalCards={1}
                   />
                 </div>
               </div>

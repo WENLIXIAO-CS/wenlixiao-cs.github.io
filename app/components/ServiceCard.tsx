@@ -3,25 +3,23 @@
 interface ServiceCardProps {
   title: string;
   items: string[];
-  index: number;
-  totalCards: number;
 }
 
-export default function ServiceCard({ title, items, index, totalCards }: ServiceCardProps) {
+export default function ServiceCard({ 
+  title, 
+  items 
+}: ServiceCardProps) {
   return (
-    <div className="bg-white dark:bg-[#111] rounded-3xl p-8 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 min-w-[300px]">
-      <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-6">{title}</h3>
-      <div className="space-y-4">
-        {items.map((item, idx) => (
-          <div 
-            key={idx}
-            className="flex items-center space-x-3 text-gray-600 dark:text-gray-300"
-          >
-            <div className="w-2 h-2 rounded-full bg-blue-500 flex-shrink-0"></div>
-            <span className="text-sm">{item}</span>
-          </div>
+    <div className="w-[400px] bg-white p-6 rounded-3xl shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+      <h3 className="text-lg font-semibold text-gray-900 mb-4">{title}</h3>
+      <ul className="space-y-2">
+        {items.map((item, index) => (
+          <li key={index} className="text-gray-600 flex items-start gap-2">
+            <div className="w-1.5 h-1.5 rounded-full bg-blue-500 mt-2 flex-shrink-0"></div>
+            {item}
+          </li>
         ))}
-      </div>
+      </ul>
     </div>
   );
 } 
