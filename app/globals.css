@@ -29,6 +29,7 @@ body {
 @tailwind components;
 @tailwind utilities;
 
+
 html, body {
   @apply bg-[#000000] text-white font-sans;
 }
