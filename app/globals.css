@@ -25,13 +25,12 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 html, body {
-  @apply bg-black text-white font-sans;
+  @apply bg-[#000000] text-white font-sans;
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */

@@ -45,7 +45,7 @@ export default function ProjectCard({
           />
         )}
         {authors && (
-          <div className="absolute bottom-0 left-0 right-0 bg-black/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-4">
+          <div className="absolute bottom-0 left-0 right-0 bg-[#000000]/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-4">
             <div className="text-white">
               <h3 className="text-sm font-semibold mb-1">Authors</h3>
               <div className="text-xs leading-relaxed">

@@ -149,9 +149,9 @@ export default function Home() {
     : projects.filter(project => project.category === activeCategory);
 
   return (
-    <div className="min-h-screen bg-[#fafafa] dark:bg-black">
+    <div className="min-h-screen bg-[#fafafa] dark:bg-[#000000]">
       {/* Navigation */}
-      <nav className="fixed top-0 w-full bg-[#fafafa]/80 dark:bg-black/80 backdrop-blur-sm z-50 border-b border-[#eaeaea] dark:border-[#333]">
+      <nav className="fixed top-0 w-full bg-[#fafafa]/80 dark:bg-[#000000]/80 backdrop-blur-sm z-50 border-b border-[#eaeaea] dark:border-[#333]">
         <div className="max-w-[1200px] mx-auto px-6">
           <div className="flex justify-between items-center h-16">
             <div className="text-lg font-medium text-black dark:text-white">Wenli Xiao</div>
