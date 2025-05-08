@@ -1,6 +1,5 @@
 'use client';
 
-import Image from "next/image";
 import ProfileCard from "./components/ProfileCard";
 import ProjectCard from "./components/ProjectCard";
 import ProjectCategories from "./components/ProjectCategories";
@@ -8,7 +7,6 @@ import { useState } from "react";
 import ExperienceCard from "./components/ExperienceCard";
 import SectionCategories from "./components/SectionCategories";
 import EducationCard from "./components/EducationCard";
-import Script from 'next/script';
 
 const projects = [
   {

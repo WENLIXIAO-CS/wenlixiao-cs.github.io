@@ -15,9 +15,8 @@ export default function ProfileCard() {
       <div className="flex-1">
         <h2 className="text-4xl font-extrabold text-gray-900 mb-3">Wenli Xiao</h2>
         <p className="text-xl font-medium text-gray-600 mb-4">PhD Student in Robotics at CMU School of Computer Science</p>
-        <p className="text-gray-500 text-lg leading-relaxed">
-          I am a PhD student in Robotics at Carnegie Mellon University's School of Computer Science, advised by Prof. Guanya Shi and Prof. John Dolan. 
-          Currently doing research intern at NVIDIA GEAR Lab working with Dr. Jim Fan and Prof. Yuke Zhu on foundation model for humanoids.
+        <p className="text-[#666] dark:text-[#888] text-lg leading-relaxed">
+          I&apos;m a Robotics Researcher
         </p>
         <div className="mt-6 flex gap-6">
           <a href="mailto:randyxiao64@gmail.com" className="text-blue-600 hover:text-blue-800 transition-colors text-lg">Email</a>
