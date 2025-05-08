@@ -7,6 +7,8 @@ import { useState } from "react";
 import ExperienceCard from "./components/ExperienceCard";
 import SectionCategories from "./components/SectionCategories";
 import EducationCard from "./components/EducationCard";
+import VisitorCounter from "./components/VisitorCounter";
+import ServiceCard from "./components/ServiceCard";
 
 const projects = [
   {
@@ -22,6 +24,7 @@ const projects = [
     arxiv: "https://arxiv.org/abs/2410.21229",
     website: "https://hover-versatile-humanoid.github.io/",
     twitter: "https://x.com/DrJimFan/status/1851643431803830551",
+    code: "https://github.com/NVlabs/HOVER/",
     authors: ["Tairan He*", "Wenli Xiao*", "Toru Lin", "Zhengyi Luo", "Zhengjia Xu", "Zhenyu Jiang", "Jan Kautz", "Changliu Liu", "Guanya Shi", "Xiaolong Wang", "Linxi 'Jim' Fan†", "Yuke Zhu†"]
   },
   {
@@ -38,6 +41,8 @@ const projects = [
     arxiv: "https://arxiv.org/abs/2409.15783",
     website: "https://lecar-lab.github.io/anycar/",
     twitter: "https://x.com/_wenlixiao/status/1846582020585275565",
+    code: "https://github.com/LeCAR-Lab/anycar",
+    video: "https://www.youtube.com/embed/BiSYeNb0Y70",
     authors: ["Wenli Xiao*", "Haoru Xue*", "Tony Tao", "Dvij Kalaria", "John Dolan", "Guanya Shi"]
   },
   {
@@ -47,7 +52,7 @@ const projects = [
     imageType: "gif" as const,
     category: "humanoid",
     points: [
-      "In Submission",
+      "RSS 2024",
       "TL;DR: ASAP learns agile whole-body humanoid motions via learning a residual action model from the real world to align sim and real physics."
     ],
     arxiv: "https://arxiv.org/abs/2502.01143",
@@ -71,6 +76,7 @@ const projects = [
     website: "https://lecar-lab.github.io/wococo/",
     video: "https://youtu.be/L18X-QbXqPI",
     twitter: "https://x.com/_wenlixiao/status/1801305252760850903",
+    code: "https://github.com/LeCAR-Lab/wococo",
     authors: ["Chong Zhang*", "Wenli Xiao*", "Tairan He", "Guanya Shi"]
   },
   {
@@ -87,6 +93,7 @@ const projects = [
     website: "https://omni.human2humanoid.com/",
     video: "https://www.youtube.com/watch?v=ofgxZHv0GMk",
     twitter: "https://x.com/TairanHe99/status/1799053120846402012",
+    code: "https://github.com/LeCAR-Lab/human2humanoid",
     authors: ["Tairan He*", "Zhengyi Luo*", "Xialin He*", "Wenli Xiao", "Chong Zhang", "Weinan Zhang", "Kris Kitani", "Changliu Liu", "Guanya Shi"]
   },
   {
@@ -103,6 +110,7 @@ const projects = [
     arxiv: "https://arxiv.org/abs/2403.04436",
     website: "https://human2humanoid.com/",
     video: "https://www.youtube.com/watch?v=0W4N2q7xtcQ",
+    code: "https://github.com/LeCAR-Lab/human2humanoid",
     authors: ["Tairan He*", "Zhengyi Luo*", "Wenli Xiao", "Chong Zhang", "Kris Kitani", "Changliu Liu", "Guanya Shi"]
   },
   {
@@ -120,6 +128,7 @@ const projects = [
     website: "https://sites.google.com/view/safe-deep-policy-adaptation",
     video: "https://www.youtube.com/watch?v=PkyRzlRQVbE",
     twitter: "https://x.com/_wenlixiao/status/1790909857496961300",
+    code: "https://github.com/LeCAR-Lab/SafeDPA",
     authors: ["Wenli Xiao*", "Tairan He*", "John Dolan", "Guanya Shi"]
   },
   {
@@ -136,6 +145,7 @@ const projects = [
     arxiv: "https://arxiv.org/abs/2401.17583",
     website: "https://agile-but-safe.github.io/",
     video: "https://www.youtube.com/watch?v=elWwPn5IhjA",
+    code: "https://github.com/LeCAR-Lab/ABS",
     authors: ["Tairan He*", "Chong Zhang*", "Wenli Xiao", "Guanqi He", "Changliu Liu", "Guanya Shi"]
   }
 ];
@@ -190,6 +200,14 @@ export default function Home() {
                 code={project.code}
                 twitter={project.twitter}
                 authors={project.authors}
+                role={project.id === 'hover' ? 'Co-Lead' :
+                      project.id === 'anycar' ? 'Co-Lead' :
+                      project.id === 'asap' ? 'Co-Lead' :
+                      project.id === 'wococo' ? 'Co-Lead' :
+                      project.id === 'omnih2o' ? 'Core Engineer' :
+                      project.id === 'h2o' ? 'Core Engineer' :
+                      project.id === 'safedpa' ? 'Co-Lead' :
+                      project.id === 'abs' ? 'Core Engineer' : undefined}
               />
             ))}
           </div>
@@ -213,21 +231,21 @@ export default function Home() {
                     title="Research Intern"
                     company="NVIDIA GEAR Lab"
                     period="2024 - Present"
-                    description="Working on foundation model for humanoids."
+                    description=""
                     index={0}
                     totalCards={4}
                     icon="/images/nvidia.png"
-                    advisor="Dr. Jim Fan, Prof. Yuke Zhu"
+                    advisor="Dr. Jim Fan\nProf. Yuke Zhu"
                   />
                   <ExperienceCard
-                    title="Robotics Institute Summer Scholar (RISS)"
-                    company="Carnegie Mellon University"
+                    title="Research Intern"
+                    company="Carnegie Mellon Univ Robotics Institute Summer Scholar, RISS"
                     period="June 2022 - Aug 2023"
                     description=""
                     index={1}
                     totalCards={4}
                     icon="/images/cmu-logo.jpg"
-                    advisor="Prof. John Dolan, Yiwei Lyu"
+                    advisor="Prof. John Dolan\nYiwei Lyu"
                   />
                   <ExperienceCard
                     title="Research Intern"
@@ -237,7 +255,7 @@ export default function Home() {
                     index={2}
                     totalCards={4}
                     icon="/images/berkeley-logo.png"
-                    advisor="Prof. Joseph E. Gonzalez, Tianjun Zhang"
+                    advisor="Prof. Joseph E. Gonzalez\nTianjun Zhang"
                   />
                   <ExperienceCard
                     title="Research Intern"
@@ -247,7 +265,7 @@ export default function Home() {
                     index={3}
                     totalCards={4}
                     icon="/images/airs-logo.jpeg"
-                    advisor="Prof. Jianwei Huang, Prof. Bing Luo"
+                    advisor="Prof. Jianwei Huang\nProf. Bing Luo"
                   />
                 </div>
               </div>
@@ -262,15 +280,16 @@ export default function Home() {
                 <div className="flex gap-8 min-w-max px-8 py-4">
                   <EducationCard
                     school="Carnegie Mellon University"
-                    degree="MS, Robotics"
-                    period="Sep 2023 - May 2025 (expected)"
+                    degree="M.S. in Robotics"
+                    period="Sep 2023 - May 2025"
+                    advisor="Prof. Guanya Shi\nProf. John Dolan"
                     index={0}
                     totalCards={3}
                     icon="/images/cmu-logo.jpg"
                   />
                   <EducationCard
                     school="UC Berkeley"
-                    degree="EECS Visiting"
+                    degree="Visiting in EECS"
                     period="Jan 2022 - May 2022"
                     index={1}
                     totalCards={3}
@@ -295,19 +314,16 @@ export default function Home() {
             <div className="relative">
               <div className="overflow-x-auto pb-6 hide-scrollbar">
                 <div className="flex gap-8 min-w-max px-8 py-4">
-                  <ExperienceCard
-                    title="Reviewer"
-                    company=""
-                    period=""
-                    description={[
-                      "IROS",
-                      "ICRA",
-                      "RA-L",
-                      "CoRL"
-                    ].join('\n')}
+                  <ServiceCard
+                    title="Conference Reviewer"
+                    items={[
+                      "International Conference on Robotics and Automation (ICRA)",
+                      "IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)",
+                      "IEEE Robotics and Automation Letters (RA-L)",
+                      "Conference on Robot Learning (CoRL)"
+                    ]}
                     index={0}
                     totalCards={1}
-                    icon=""
                   />
                 </div>
               </div>
@@ -322,6 +338,9 @@ export default function Home() {
       <footer className="py-8 px-6 border-t border-[#eaeaea] dark:border-[#333]">
         <div className="max-w-[1200px] mx-auto text-center text-[#666] dark:text-[#888]">
           © {new Date().getFullYear()} Wenli Xiao. All rights reserved.
+          <div className="mt-4">
+            <VisitorCounter />
+          </div>
         </div>
       </footer>
     </div>

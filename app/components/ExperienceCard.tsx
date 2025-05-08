@@ -1,3 +1,5 @@
+'use client';
+
 import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 
@@ -95,7 +97,17 @@ export default function ExperienceCard({
             <p className="text-[#666] dark:text-[#888] mb-2 text-lg">{company}</p>
             <p className="text-[#666] dark:text-[#888] mb-2">{period}</p>
             {advisor && (
-              <p className="text-[#666] dark:text-[#888] mb-4">Advisor: {advisor}</p>
+              <div className="mt-4">
+                <p className="text-sm text-gray-500 dark:text-gray-400">Advisor:</p>
+                <div className="text-sm text-gray-600 dark:text-gray-300 mt-1">
+                  {advisor.split('\\n').map((name, index) => (
+                    <div key={index} className="flex items-center mt-1">
+                      <div className="w-1.5 h-1.5 rounded-full bg-blue-500 mr-2 flex-shrink-0"></div>
+                      <p>{name}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
             )}
             <div className="text-[#444] dark:text-[#999]">
               {description.split('\n').map((line, index) => (
