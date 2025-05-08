@@ -1,5 +1,3 @@
-import { useState, useEffect } from 'react';
-
 interface TimelineScaleProps {
   onZoomChange: (zoom: 'year' | 'month') => void;
   currentZoom: 'year' | 'month';

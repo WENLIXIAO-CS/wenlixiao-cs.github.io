@@ -1,5 +1,3 @@
-import { useState } from 'react';
-
 interface SectionCategoriesProps {
   activeCategory: string;
   onCategoryChange: (category: string) => void;
