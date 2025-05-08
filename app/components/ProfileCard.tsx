@@ -6,7 +6,7 @@ export default function ProfileCard() {
       <div className="flex-shrink-0">
         <Image
           className="h-32 w-32 md:h-40 md:w-40 rounded-full border-4 border-white shadow-md"
-          src="/images/wenli-ny.jpeg"
+          src="/images/wenli.jpg"
           alt="Profile"
           width={160}
           height={160}
