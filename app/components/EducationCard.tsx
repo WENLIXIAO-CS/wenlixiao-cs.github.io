@@ -70,7 +70,7 @@ export default function EducationCard({
             <div className="mt-2">
               <p className="text-sm text-gray-500">Advisor:</p>
               <div className="text-sm text-gray-600">
-                {advisor.split('\n').map((name, index) => (
+                {advisor.split('\\n').map((name, index) => (
                   <div key={index} className="flex items-center gap-1.5">
                     <div className="w-1.5 h-1.5 rounded-full bg-blue-500 flex-shrink-0"></div>
                     {name}
