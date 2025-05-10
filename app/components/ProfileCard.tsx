@@ -1,6 +1,28 @@
 import Image from "next/image";
+import { useEffect, useState } from "react";
 
 export default function ProfileCard() {
+  const [citationCount, setCitationCount] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchCitationCount = async () => {
+      try {
+        const response = await fetch('/api/scholar');
+        const data = await response.json();
+        if (data.citations) {
+          setCitationCount(data.citations);
+        }
+      } catch (error) {
+        console.error('Error fetching citation count:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchCitationCount();
+  }, []);
+
   return (
     <div className="flex flex-col md:flex-row items-center bg-[#f8f6ff] p-4 md:p-8 rounded-3xl shadow-lg max-w-[1200px] mx-auto space-y-4 md:space-y-0 md:space-x-8">
       <div className="flex-shrink-0">
@@ -26,7 +48,18 @@ export default function ProfileCard() {
         </p>
         <div className="mt-4 md:mt-6 flex flex-wrap justify-center md:justify-start gap-4 md:gap-6">
           <a href="mailto:randyxiao64@gmail.com" className="text-blue-600 hover:text-blue-800 transition-colors text-base md:text-lg">Email</a>
-          <a href="https://scholar.google.com/citations?user=WGbVYzsAAAAJ&hl=en" className="text-blue-600 hover:text-blue-800 transition-colors text-base md:text-lg">Google Scholar</a>
+          <div className="flex flex-col items-center">
+            <a href="https://scholar.google.com/citations?user=WGbVYzsAAAAJ&hl=en" className="text-blue-600 hover:text-blue-800 transition-colors text-base md:text-lg">
+              Google Scholar
+            </a>
+            {isLoading ? (
+              <span className="text-sm text-gray-500">(loading...)</span>
+            ) : citationCount ? (
+              <span className="text-sm text-gray-500">({citationCount} citations)</span>
+            ) : (
+              <span className="text-sm text-gray-500">(citation count unavailable)</span>
+            )}
+          </div>
           <a href="https://twitter.com/_wenlixiao" className="text-blue-600 hover:text-blue-800 transition-colors text-base md:text-lg">Twitter</a>
           <a href="https://github.com/WENLIXIAO-CS" className="text-blue-600 hover:text-blue-800 transition-colors text-base md:text-lg">Github</a>
         </div>
