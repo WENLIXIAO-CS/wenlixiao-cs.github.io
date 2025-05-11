@@ -27,11 +27,11 @@ export default function ProfileCard() {
     <div className="flex flex-col md:flex-row items-center bg-[#f8f6ff] p-4 md:p-8 rounded-3xl shadow-lg max-w-[1200px] mx-auto space-y-4 md:space-y-0 md:space-x-8">
       <div className="flex-shrink-0">
         <Image
-          className="h-32 w-32 md:h-40 md:w-40 rounded-full border-4 border-white shadow-md"
-          src="/images/wenli.jpg"
+          className="w-40 h-60 md:w-48 md:h-72 rounded-3xl border-4 border-white shadow-md object-cover"
+          src="/images/wenli-cmu.jpg"
           alt="Profile"
-          width={160}
-          height={160}
+          width={192}
+          height={288}
         />
       </div>
       <div className="flex-1 text-center md:text-left">
