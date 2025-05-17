@@ -8,7 +8,7 @@ export default function ProfileCard() {
   useEffect(() => {
     const fetchCitationCount = async () => {
       try {
-        const response = await fetch('/api/scholar');
+        const response = await fetch(`/api/scholar?timestamp=${Date.now()}`);
         const data = await response.json();
         if (data.citations) {
           setCitationCount(data.citations);
