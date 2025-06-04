@@ -7,7 +7,6 @@ import { useState } from "react";
 import ExperienceCard from "./components/ExperienceCard";
 import SectionCategories from "./components/SectionCategories";
 import EducationCard from "./components/EducationCard";
-import VisitorCounter from "./components/VisitorCounter";
 import ServiceCard from "./components/ServiceCard";
 
 const projects = [
@@ -44,6 +43,20 @@ const projects = [
     code: "https://github.com/LeCAR-Lab/anycar",
     video: "https://www.youtube.com/embed/BiSYeNb0Y70",
     authors: ["Wenli Xiao*", "Haoru Xue*", "Tony Tao", "Dvij Kalaria", "John Dolan", "Guanya Shi"]
+  },
+  {
+    id: 'softa',
+    title: "Hold My Beer: Learning Gentle Humanoid Locomotion and End-Effector Stabilization Control",
+    image: "/images/softa.gif",
+    imageType: "gif" as const,
+    category: "humanoid",
+    points: [
+      "TL;DR: SoFTA is a slow-fast two-agent sim2real RL framework achieving human-level end-effector stability for humanoids."
+    ],
+    arxiv: "https://arxiv.org/abs/2505.24198",
+    website: "https://lecar-lab.github.io/SoFTA/",
+    code: "https://github.com/LeCAR-Lab/SoFTA",
+    authors: ["Yitang Li", "Yuanhang Zhang", "Wenli Xiao", "Chaoyi Pan", "Haoyang Weng", "Guanqi He", "Tairan He", "Guanya Shi"]
   },
   {
     id: 'asap',
@@ -207,6 +220,7 @@ export default function Home() {
                       project.id === 'omnih2o' ? 'Core Engineer' :
                       project.id === 'h2o' ? 'Core Engineer' :
                       project.id === 'safedpa' ? 'Co-Lead' :
+                      project.id === 'softa' ? 'Mentorship' :
                       project.id === 'abs' ? 'Core Engineer' : undefined}
               />
             ))}
@@ -333,9 +347,6 @@ export default function Home() {
       <footer className="py-8 px-6 border-t border-[#eaeaea] dark:border-[#333]">
         <div className="max-w-[1200px] mx-auto text-center text-[#666] dark:text-[#888]">
           © {new Date().getFullYear()} Wenli Xiao. All rights reserved.
-          <div className="mt-4">
-            <VisitorCounter />
-          </div>
         </div>
       </footer>
     </div>
