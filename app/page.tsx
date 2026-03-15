@@ -1,354 +1,180 @@
 'use client';
 
+import { useState } from "react";
 import ProfileCard from "./components/ProfileCard";
 import ProjectCard from "./components/ProjectCard";
-import ProjectCategories from "./components/ProjectCategories";
-import { useState } from "react";
+import TabBar from "./components/TabBar";
 import ExperienceCard from "./components/ExperienceCard";
-import SectionCategories from "./components/SectionCategories";
 import EducationCard from "./components/EducationCard";
 import ServiceCard from "./components/ServiceCard";
+import NewsCard from "./components/NewsCard";
+import ThemeToggle from "./components/ThemeToggle";
+import MobileLayout from "./components/MobileLayout";
+import { projects } from "./data/projects";
+import { experiences, educations, services } from "./data/background";
+import { newsItems } from "./data/news";
+import starsData from "./data/stars.json";
 
-const projects = [
-  {
-    id: 'hover',
-    title: "HOVER: Versatile Neural Whole-Body Controller for Humanoid Robots",
-    image: "/images/hover.gif",
-    imageType: "gif" as const,
-    category: "foundation",
-    points: [
-      "ICRA 2025",
-      "TL;DR: HOVER is a 1.5M-parameter neural network to control the body of a humanoid robot. It takes a lot of subconscious processing for us humans to walk, maintain balance, and maneuver our arms and legs into desired positions. We capture this 'subconsciousness' in HOVER, a single model that learns how to coordinate the motors of a humanoid robot to support locomotion and manipulation."
-    ],
-    arxiv: "https://arxiv.org/abs/2410.21229",
-    website: "https://hover-versatile-humanoid.github.io/",
-    twitter: "https://x.com/DrJimFan/status/1851643431803830551",
-    code: "https://github.com/NVlabs/HOVER/",
-    authors: ["Tairan He*", "Wenli Xiao*", "Toru Lin", "Zhengyi Luo", "Zhengjia Xu", "Zhenyu Jiang", "Jan Kautz", "Changliu Liu", "Guanya Shi", "Xiaolong Wang", "Linxi 'Jim' Fan†", "Yuke Zhu†"]
-  },
-  {
-    id: 'anycar',
-    title: "AnyCar to Anywhere: Learning Universal Dynamics Model",
-    image: "/images/anycar.gif",
-    imageType: "gif" as const,
-    category: "foundation",
-    points: [
-      "CoRL 2024, X-Embodiment workshop",
-      "ICRA 2025",
-      "TL;DR: AnyCar is a generalist vehicle dynamics model for agile mobility. It can adapt to various cars, tasks, and envs via in-context adaptation, outperforming well-tuned generalist models up to 54%."
-    ],
-    arxiv: "https://arxiv.org/abs/2409.15783",
-    website: "https://lecar-lab.github.io/anycar/",
-    twitter: "https://x.com/_wenlixiao/status/1846582020585275565",
-    code: "https://github.com/LeCAR-Lab/anycar",
-    video: "https://www.youtube.com/embed/BiSYeNb0Y70",
-    authors: ["Wenli Xiao*", "Haoru Xue*", "Tony Tao", "Dvij Kalaria", "John Dolan", "Guanya Shi"]
-  },
-  {
-    id: 'softa',
-    title: "Hold My Beer: Learning Gentle Humanoid Locomotion and End-Effector Stabilization Control",
-    image: "/images/softa.gif",
-    imageType: "gif" as const,
-    category: "humanoid",
-    points: [
-      "TL;DR: SoFTA is a slow-fast two-agent sim2real RL framework achieving human-level end-effector stability for humanoids."
-    ],
-    arxiv: "https://arxiv.org/abs/2505.24198",
-    website: "https://lecar-lab.github.io/SoFTA/",
-    code: "https://github.com/LeCAR-Lab/SoFTA",
-    authors: ["Yitang Li", "Yuanhang Zhang", "Wenli Xiao", "Chaoyi Pan", "Haoyang Weng", "Guanqi He", "Tairan He", "Guanya Shi"]
-  },
-  {
-    id: 'asap',
-    title: "ASAP: Aligning Simulation and Real-World Physics",
-    image: "/images/ASAP.gif",
-    imageType: "gif" as const,
-    category: "humanoid",
-    points: [
-      "RSS 2024",
-      "TL;DR: ASAP learns agile whole-body humanoid motions via learning a residual action model from the real world to align sim and real physics."
-    ],
-    arxiv: "https://arxiv.org/abs/2502.01143",
-    website: "https://agile.human2humanoid.com/",
-    code: "https://github.com/LeCAR-Lab/ASAP",
-    twitter: "https://x.com/_wenlixiao/status/1886805380354728392",
-    authors: ["Tairan He*", "Jiawei Gao*", "Wenli Xiao*", "Yuanhang Zhang*", "Zi Wang", "Jiashun Wang", "Zhengyi Luo", "Guanqi He", "Nikhil Sobanbab", "Chaoyi Pan", "Zeji Yi", "Guannan Qu", "Kris Kitani", "Jessica Hodgins", "Linxi 'Jim' Fan", "Yuke Zhu", "Changliu Liu", "Guanya Shi"]
-  },
-  {
-    id: 'wococo',
-    title: "WoCoCo: Learning Whole-Body Humanoid Control with Sequential Contacts",
-    image: "/images/wococo.gif",
-    imageType: "gif" as const,
-    category: "humanoid",
-    points: [
-      "CoRL 2024 (Spotlight)",
-      "RSS 2024, Task Specification Workshop",
-      "TL;DR: WoCoCo is the first unified RL framework to learn whole-body humanoid control with sequential contacts."
-    ],
-    arxiv: "https://arxiv.org/abs/2406.06005",
-    website: "https://lecar-lab.github.io/wococo/",
-    video: "https://youtu.be/L18X-QbXqPI",
-    twitter: "https://x.com/_wenlixiao/status/1801305252760850903",
-    code: "https://github.com/LeCAR-Lab/wococo",
-    authors: ["Chong Zhang*", "Wenli Xiao*", "Tairan He", "Guanya Shi"]
-  },
-  {
-    id: 'omnih2o',
-    title: "OmniH2O: Universal and Dexterous Human-to-Humanoid Whole-Body Teleoperation and Learning",
-    image: "/images/omnih2o.gif",
-    imageType: "gif" as const,
-    category: "humanoid",
-    points: [
-      "CoRL 2024",
-      "TL;DR: OmniH2O provides the first universal whole-body humanoid control interface that enables diverse teleoperation and autonomy methods."
-    ],
-    arxiv: "https://arxiv.org/abs/2406.08858",
-    website: "https://omni.human2humanoid.com/",
-    video: "https://www.youtube.com/watch?v=ofgxZHv0GMk",
-    twitter: "https://x.com/TairanHe99/status/1799053120846402012",
-    code: "https://github.com/LeCAR-Lab/human2humanoid",
-    authors: ["Tairan He*", "Zhengyi Luo*", "Xialin He*", "Wenli Xiao", "Chong Zhang", "Weinan Zhang", "Kris Kitani", "Changliu Liu", "Guanya Shi"]
-  },
-  {
-    id: 'h2o',
-    title: "Learning Human-to-Humanoid Real-Time Whole-Body Teleoperation",
-    image: "/images/h2o.gif",
-    imageType: "gif" as const,
-    category: "humanoid",
-    points: [
-      "IROS 2024 (Oral presentation)",
-      "ICRA 2024, Agile Robotics Workshop (Spotlight)",
-      "TL;DR: H2O enables real-time whole-body teleoperation of a full-sized humanoid to perform tasks like pick and place, walking, kicking, boxing, etc."
-    ],
-    arxiv: "https://arxiv.org/abs/2403.04436",
-    website: "https://human2humanoid.com/",
-    video: "https://www.youtube.com/watch?v=0W4N2q7xtcQ",
-    code: "https://github.com/LeCAR-Lab/human2humanoid",
-    authors: ["Tairan He*", "Zhengyi Luo*", "Wenli Xiao", "Chong Zhang", "Kris Kitani", "Changliu Liu", "Guanya Shi"]
-  },
-  {
-    id: 'safedpa',
-    title: "Safe Deep Policy Adaptation",
-    image: "/images/SafeDPA.gif",
-    imageType: "gif" as const,
-    category: "mobility",
-    points: [
-      "ICRA 2024",
-      "CoRL 2023 Deployable Workshop",
-      "TL;DR: This paper jointly tackles policy adaptation and safe reinforcement learning with safety guarantees. Comprehensive experiments on (1) classic control problems (Inverted Pendulum), (2) simulation benchmarks (Safety Gym), and (3) a real-world agile robotics platform (RC Car) demonstrate great superiority of SafeDPA in both safety and task performance, over state-of-the-art baselines."
-    ],
-    arxiv: "https://arxiv.org/abs/2310.08602",
-    website: "https://sites.google.com/view/safe-deep-policy-adaptation",
-    video: "https://www.youtube.com/watch?v=PkyRzlRQVbE",
-    twitter: "https://x.com/_wenlixiao/status/1790909857496961300",
-    code: "https://github.com/LeCAR-Lab/SafeDPA",
-    authors: ["Wenli Xiao*", "Tairan He*", "John Dolan", "Guanya Shi"]
-  },
-  {
-    id: 'abs',
-    title: "Agile But Safe: Learning Collision-Free High-Speed Legged Locomotion",
-    image: "/images/abs.gif",
-    imageType: "gif" as const,
-    category: "mobility",
-    points: [
-      "RSS 2024 (Outstanding Student Paper Award Finalist - Top 3)",
-      "ICRA 2024, Agile Robotics Workshop (Spotlight)",
-      "TL;DR: Legged robots navigating cluttered environments must be jointly agile for efficient task execution and safe to avoid collisions with obstacles or humans. Existing studies either develop conservative controllers (< 1.0 m/s) to ensure safety, or focus on agility without considering potentially fatal collisions. This paper introduces Agile But Safe (ABS), a learning-based control framework that enables agile and collision-free locomotion for quadrupedal robots."
-    ],
-    arxiv: "https://arxiv.org/abs/2401.17583",
-    website: "https://agile-but-safe.github.io/",
-    video: "https://www.youtube.com/watch?v=elWwPn5IhjA",
-    code: "https://github.com/LeCAR-Lab/ABS",
-    authors: ["Tairan He*", "Chong Zhang*", "Wenli Xiao", "Guanqi He", "Changliu Liu", "Guanya Shi"]
-  }
+const projectTabs = [
+  { key: 'foundation', label: 'Foundation Models' },
+  { key: 'humanoid', label: 'Humanoid' },
+  { key: 'mobility', label: 'Mobility' },
+  { key: 'all', label: 'All' },
 ];
+
+const sectionTabs = [
+  { key: 'experience', label: 'Experience' },
+  { key: 'education', label: 'Education' },
+  { key: 'service', label: 'Service' },
+];
+
+function getStars(codeUrl?: string): number | undefined {
+  if (!codeUrl || !codeUrl.includes('github.com')) return undefined;
+  const repoPath = codeUrl.split('github.com/')[1]?.replace(/\/$/, '');
+  return repoPath ? (starsData as Record<string, number>)[repoPath] : undefined;
+}
 
 export default function Home() {
   const [activeCategory, setActiveCategory] = useState('foundation');
   const [activeSection, setActiveSection] = useState('experience');
 
-  const filteredProjects = activeCategory === 'all' 
-    ? projects 
+  const filteredProjects = activeCategory === 'all'
+    ? projects
     : projects.filter(project => project.category === activeCategory);
 
   return (
-    <div className="min-h-screen bg-[#fafafa] dark:bg-[#000000]">
-      {/* Navigation */}
-      <nav className="fixed top-0 w-full bg-[#fafafa]/80 dark:bg-[#000000]/80 backdrop-blur-sm z-50 border-b border-[#eaeaea] dark:border-[#333]">
-        <div className="max-w-[1200px] mx-auto px-6">
-          <div className="flex justify-between items-center h-16">
-            <div className="text-lg font-medium text-black dark:text-white">Wenli Xiao</div>
-            <div className="flex gap-8">
+    <>
+      {/* Mobile: full-screen app with bottom tabs */}
+      <div className="md:hidden">
+        <MobileLayout />
+      </div>
+
+      {/* Desktop: traditional scrolling layout */}
+      <div className="hidden md:block min-h-screen bg-[#fafafa] dark:bg-[#000000]">
+        {/* Navigation */}
+        <nav className="fixed top-0 w-full bg-white/60 dark:bg-[#000]/60 backdrop-blur-xl z-50 border-b border-white/30 dark:border-white/10">
+          <div className="max-w-[1200px] mx-auto px-6">
+            <div className="flex justify-between items-center h-16">
+              <div className="text-lg font-medium text-black dark:text-white">Wenli Xiao</div>
+              <div className="flex items-center gap-6">
+                <a href="#news" className="text-sm text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors">News</a>
+                <a href="#research" className="text-sm text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors">Research</a>
+                <a href="#background" className="text-sm text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors">Background</a>
+                <a href="/blog" className="text-sm text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors">Blog</a>
+                <ThemeToggle />
+              </div>
             </div>
           </div>
-        </div>
-      </nav>
+        </nav>
 
-      {/* Hero Section */}
-      <section className="pt-32 pb-16 px-6">
-        <div className="max-w-[1200px] mx-auto">
-          <ProfileCard />
-        </div>
-      </section>
-
-      {/* Projects Section */}
-      <section className="py-16 px-6 bg-[#f8f6ff]">
-        <div className="max-w-[1200px] mx-auto">
-          <h2 className="text-2xl font-bold mb-12 text-black dark:text-white">Research Projects</h2>
-          <ProjectCategories 
-            activeCategory={activeCategory}
-            onCategoryChange={setActiveCategory}
-          />
-          <div className="space-y-12">
-            {filteredProjects.map((project) => (
-              <ProjectCard
-                key={project.id}
-                title={project.title}
-                image={project.image}
-                imageType={project.imageType}
-                points={project.points}
-                arxiv={project.arxiv}
-                website={project.website}
-                video={project.video}
-                code={project.code}
-                twitter={project.twitter}
-                authors={project.authors}
-                role={project.id === 'hover' ? 'Co-Lead' :
-                      project.id === 'anycar' ? 'Co-Lead' :
-                      project.id === 'asap' ? 'Co-Lead' :
-                      project.id === 'wococo' ? 'Co-Lead' :
-                      project.id === 'omnih2o' ? 'Core Engineer' :
-                      project.id === 'h2o' ? 'Core Engineer' :
-                      project.id === 'safedpa' ? 'Co-Lead' :
-                      project.id === 'softa' ? 'Mentorship' :
-                      project.id === 'abs' ? 'Core Engineer' : undefined}
-              />
-            ))}
+        {/* Hero Section */}
+        <section className="pt-32 pb-16 px-6">
+          <div className="max-w-[1200px] mx-auto">
+            <ProfileCard />
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Experience, Education, and Service Section */}
-      <section className="py-16 px-6 bg-white dark:bg-[#111]">
-        <div className="max-w-[1200px] mx-auto">
-          <h2 className="text-2xl font-bold mb-12 text-black dark:text-white">Background</h2>
-          <SectionCategories 
-            activeCategory={activeSection}
-            onCategoryChange={setActiveSection}
-          />
-          
-          {activeSection === 'experience' && (
-            <div className="relative">
-              <div className="overflow-x-auto pb-6 hide-scrollbar">
-                <div className="flex gap-8 min-w-max px-8 py-4">
-                  <ExperienceCard
-                    title="Research Intern"
-                    company="NVIDIA GEAR Lab"
-                    period="2024 - Present"
-                    description=""
-                    index={0}
-                    totalCards={4}
-                    icon="/images/nvidia.png"
-                    advisor="Dr. Jim Fan\nProf. Yuke Zhu"
-                  />
-                  <ExperienceCard
-                    title="Research Intern"
-                    company="Carnegie Mellon Univ Robotics Institute Summer Scholar, RISS"
-                    period="June 2022 - Aug 2023"
-                    description=""
-                    index={1}
-                    totalCards={4}
-                    icon="/images/cmu-logo.jpg"
-                    advisor="Prof. John Dolan\nYiwei Lyu"
-                  />
-                  <ExperienceCard
-                    title="Research Intern"
-                    company="RISE Lab, UC Berkeley"
-                    period="March 2022 - May 2022"
-                    description=""
-                    index={2}
-                    totalCards={4}
-                    icon="/images/berkeley-logo.png"
-                    advisor="Prof. Joseph E. Gonzalez\nTianjun Zhang"
-                  />
-                  <ExperienceCard
-                    title="Research Intern"
-                    company="NCEL Lab, Shenzhen AIRS"
-                    period="Aug 2020 - March 2022"
-                    description=""
-                    index={3}
-                    totalCards={4}
-                    icon="/images/airs-logo.jpeg"
-                    advisor="Prof. Jianwei Huang\nProf. Bing Luo"
-                  />
-                </div>
-              </div>
-              <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-white dark:from-[#111] to-transparent pointer-events-none"></div>
-              <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-white dark:from-[#111] to-transparent pointer-events-none"></div>
+        {/* News Section */}
+        <section id="news" className="py-16 px-6 bg-white dark:bg-[#111] border-t border-b border-gray-100 dark:border-[#222]">
+          <div className="max-w-[1200px] mx-auto">
+            <h2 className="text-2xl font-bold mb-12 text-black dark:text-white">News</h2>
+            <NewsCard items={newsItems} />
+          </div>
+        </section>
+
+        {/* Projects Section */}
+        <section id="research" className="py-16 px-6 bg-[#fafafa] dark:bg-[#000] border-b border-gray-100 dark:border-[#222]">
+          <div className="max-w-[1200px] mx-auto">
+            <h2 className="text-2xl font-bold mb-12 text-black dark:text-white">Research Projects</h2>
+            <TabBar
+              tabs={projectTabs}
+              activeKey={activeCategory}
+              onTabChange={setActiveCategory}
+            />
+            <div className="space-y-12">
+              {filteredProjects.map((project) => (
+                <ProjectCard
+                  key={project.id}
+                  title={project.title}
+                  image={project.image}
+                  imageType={project.imageType}
+                  points={project.points}
+                  arxiv={project.arxiv}
+                  website={project.website}
+                  video={project.video}
+                  code={project.code}
+                  twitter={project.twitter}
+                  pdf={project.pdf}
+                  authors={project.authors}
+                  role={project.role}
+                  stars={getStars(project.code)}
+                />
+              ))}
             </div>
-          )}
+          </div>
+        </section>
 
-          {activeSection === 'education' && (
-            <div className="relative">
-              <div className="overflow-x-auto pb-6 hide-scrollbar">
-                <div className="flex gap-8 min-w-max px-8 py-4">
-                  <EducationCard
-                    school="Carnegie Mellon University"
-                    degree="M.S. in Robotics"
-                    period="Sep 2023 - May 2025"
-                    advisor="Prof. Guanya Shi\nProf. John Dolan"
-                    index={0}
-                    icon="/images/cmu-logo.jpg"
-                  />
-                  <EducationCard
-                    school="UC Berkeley"
-                    degree="Visiting in EECS"
-                    period="Jan 2022 - May 2022"
-                    index={1}
-                    icon="/images/berkeley-logo.png"
-                  />
-                  <EducationCard
-                    school="The Chinese University of Hong Kong, Shenzhen"
-                    degree="B.S. in Electric Information Engineering"
-                    period="Sep 2019 - Jun 2023"
-                    index={2}
-                    icon="/images/cuhksz-logo.png"
-                  />
+        {/* Background Section */}
+        <section id="background" className="py-16 px-6 bg-white dark:bg-[#111]">
+          <div className="max-w-[1200px] mx-auto">
+            <h2 className="text-2xl font-bold mb-12 text-black dark:text-white">Background</h2>
+            <TabBar
+              tabs={sectionTabs}
+              activeKey={activeSection}
+              onTabChange={setActiveSection}
+            />
+
+            {activeSection === 'experience' && (
+              <div className="relative">
+                <div className="overflow-x-auto pb-6 hide-scrollbar scroll-smooth snap-x snap-mandatory">
+                  <div className="flex gap-6 min-w-max px-8 py-4">
+                    {experiences.map((exp, i) => (
+                      <ExperienceCard key={i} {...exp} />
+                    ))}
+                  </div>
                 </div>
+                <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-white dark:from-[#111] to-transparent pointer-events-none"></div>
+                <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-white dark:from-[#111] to-transparent pointer-events-none"></div>
               </div>
-              <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-white dark:from-[#111] to-transparent pointer-events-none"></div>
-              <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-white dark:from-[#111] to-transparent pointer-events-none"></div>
-            </div>
-          )}
+            )}
 
-          {activeSection === 'service' && (
-            <div className="relative">
-              <div className="overflow-x-auto pb-6 hide-scrollbar">
-                <div className="flex gap-8 min-w-max px-8 py-4">
-                  <ServiceCard
-                    title="Conference Reviewer"
-                    items={[
-                      "International Conference on Robotics and Automation (ICRA)",
-                      "IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)",
-                      "IEEE Robotics and Automation Letters (RA-L)",
-                      "Conference on Robot Learning (CoRL)"
-                    ]}
-                  />
+            {activeSection === 'education' && (
+              <div className="relative">
+                <div className="overflow-x-auto pb-6 hide-scrollbar scroll-smooth snap-x snap-mandatory">
+                  <div className="flex gap-6 min-w-max px-8 py-4">
+                    {educations.map((edu, i) => (
+                      <EducationCard key={i} {...edu} />
+                    ))}
+                  </div>
                 </div>
+                <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-white dark:from-[#111] to-transparent pointer-events-none"></div>
+                <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-white dark:from-[#111] to-transparent pointer-events-none"></div>
               </div>
-              <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-white dark:from-[#111] to-transparent pointer-events-none"></div>
-              <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-white dark:from-[#111] to-transparent pointer-events-none"></div>
-            </div>
-          )}
-        </div>
-      </section>
+            )}
 
-      {/* Footer */}
-      <footer className="py-8 px-6 border-t border-[#eaeaea] dark:border-[#333]">
-        <div className="max-w-[1200px] mx-auto text-center text-[#666] dark:text-[#888]">
-          © {new Date().getFullYear()} Wenli Xiao. All rights reserved.
-        </div>
-      </footer>
-    </div>
+            {activeSection === 'service' && (
+              <div className="relative">
+                <div className="overflow-x-auto pb-6 hide-scrollbar scroll-smooth snap-x snap-mandatory">
+                  <div className="flex gap-6 min-w-max px-8 py-4">
+                    {services.map((svc, i) => (
+                      <ServiceCard key={i} {...svc} />
+                    ))}
+                  </div>
+                </div>
+                <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-white dark:from-[#111] to-transparent pointer-events-none"></div>
+                <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-white dark:from-[#111] to-transparent pointer-events-none"></div>
+              </div>
+            )}
+          </div>
+        </section>
+
+        {/* Footer */}
+        <footer className="py-8 px-6 border-t border-[#eaeaea] dark:border-[#333]">
+          <div className="max-w-[1200px] mx-auto text-center text-gray-500 dark:text-gray-500">
+            &copy; {new Date().getFullYear()} Wenli Xiao. All rights reserved.
+          </div>
+        </footer>
+      </div>
+    </>
   );
 }

@@ -27,6 +27,10 @@ jobs:
           cache: 'npm'
       - name: Install dependencies
         run: npm ci
+      - name: Fetch GitHub stars
+        run: node scripts/fetch-stars.mjs
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Build with Next.js
         run: npm run build
       - name: Upload artifact

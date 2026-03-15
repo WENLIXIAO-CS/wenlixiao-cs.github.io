@@ -1,12 +1,42 @@
-import '../styles/globals.css'
-
 import type { Metadata } from "next";
-import { GeistSans, GeistMono } from 'geist/font'
+import { GeistSans } from 'geist/font'
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Wenli Xiao",
-  description: "Personal website of Wenli Xiao",
+  metadataBase: new URL('https://wenlixiao.com'),
+  title: {
+    default: 'Wenli Xiao | CMU Robotics PhD',
+    template: '%s | Wenli Xiao',
+  },
+  description: 'Wenli Xiao is a Robotics PhD student at Carnegie Mellon University, working on humanoid robots, robot foundation models, and agile mobility.',
+  keywords: ['robotics', 'humanoid', 'CMU', 'robot learning', 'reinforcement learning', 'foundation models', 'Wenli Xiao'],
+  robots: {
+    index: true,
+    follow: true,
+  },
+  openGraph: {
+    title: 'Wenli Xiao | CMU Robotics PhD',
+    description: 'Robotics PhD student at Carnegie Mellon University, working on humanoid robots, robot foundation models, and agile mobility.',
+    url: 'https://wenlixiao.com',
+    siteName: 'Wenli Xiao',
+    images: [
+      {
+        url: '/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Wenli Xiao - CMU Robotics PhD',
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Wenli Xiao | CMU Robotics PhD',
+    description: 'Robotics PhD student at CMU, working on humanoid robots and robot foundation models.',
+    creator: '@_wenlixiao',
+    images: ['/og-image.jpg'],
+  },
   icons: {
     icon: [
       {
@@ -23,7 +53,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={`${GeistSans.className} antialiased`}
       >
