@@ -18,7 +18,7 @@ export default function EducationCard({
   icon
 }: EducationCardProps) {
   return (
-    <div className="w-full md:w-[360px] bg-white/70 dark:bg-[#111]/70 backdrop-blur-xl border border-white/40 dark:border-white/10 p-6 rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300 snap-start">
+    <div className="w-full md:w-[360px] bg-white/45 dark:bg-white/[0.06] backdrop-blur-2xl backdrop-saturate-150 border border-white/60 dark:border-white/[0.08] p-6 rounded-2xl shadow-[0_4px_24px_rgba(100,120,180,0.08)] dark:shadow-[0_4px_24px_rgba(0,0,0,0.25)] hover:shadow-[0_8px_32px_rgba(100,120,180,0.14)] transition-shadow duration-300 snap-start" style={{ borderTopColor: 'rgba(255,255,255,0.8)', borderLeftColor: 'rgba(255,255,255,0.7)' }}>
       <div className="flex items-start gap-4">
         <div className="w-12 h-12 relative rounded-xl overflow-hidden flex-shrink-0">
           <Image
@@ -29,9 +29,9 @@ export default function EducationCard({
           />
         </div>
         <div>
-          <h3 className="text-lg font-semibold text-gray-900 dark:text-white">{school}</h3>
-          <p className="text-gray-600 dark:text-gray-400">{degree}</p>
-          <p className="text-gray-500 dark:text-gray-500 text-sm">{period}</p>
+          <h3 className="text-lg font-semibold text-[#1a2332] dark:text-white/90 tracking-tight">{school}</h3>
+          <p className="text-[#4a5568] dark:text-white/50">{degree}</p>
+          <p className="text-[#8b95a5] dark:text-white/30 text-sm">{period}</p>
           {advisor && (
             <div className="mt-2">
               <p className="text-sm text-gray-500 dark:text-gray-400">Advisor:</p>

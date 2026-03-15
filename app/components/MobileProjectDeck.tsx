@@ -176,15 +176,15 @@ export default function MobileProjectDeck({ projects, getStars }: Props) {
             onClick={() => { setCurrentIndex(i); setOffset(0); setExitDir(null); }}
             className={`h-1.5 rounded-full transition-all duration-300 ${
               i === currentIndex
-                ? 'bg-gray-900 dark:bg-white w-5'
-                : 'bg-gray-300 dark:bg-gray-600 w-1.5'
+                ? 'bg-[#1a2332] dark:bg-white/80 w-5'
+                : 'bg-[#c0c8d4] dark:bg-white/15 w-1.5'
             }`}
           />
         ))}
       </div>
 
       {/* Swipe hint text */}
-      <p className="text-center text-[10px] text-gray-400 dark:text-gray-600 mt-2 select-none">
+      <p className="text-center text-[10px] text-[#a0aab8] dark:text-white/20 mt-2 select-none">
         swipe to browse
       </p>
     </div>
@@ -209,7 +209,7 @@ function CardContent({
   const tldr = project.points.find(p => p.startsWith('TL;DR'))?.replace('TL;DR: ', '');
 
   return (
-    <div className="h-full bg-white/70 dark:bg-[#111]/70 backdrop-blur-xl rounded-3xl shadow-xl overflow-hidden flex flex-col border border-white/40 dark:border-white/10">
+    <div className="h-full bg-white/45 dark:bg-white/[0.06] backdrop-blur-2xl backdrop-saturate-150 rounded-3xl shadow-[0_8px_40px_rgba(100,120,180,0.12),0_2px_8px_rgba(100,120,180,0.06)] dark:shadow-[0_8px_40px_rgba(0,0,0,0.3)] overflow-hidden flex flex-col border border-white/60 dark:border-white/[0.08]" style={{ borderTopColor: 'rgba(255,255,255,0.8)', borderLeftColor: 'rgba(255,255,255,0.7)' }}>
       {/* Video / Media */}
       <div className="relative flex-shrink-0" style={{ height: '38%' }}>
         {showVideo && videoSources ? (
@@ -242,7 +242,7 @@ function CardContent({
 
       {/* Content */}
       <div className="flex-1 px-4 pt-3 pb-3 flex flex-col overflow-hidden min-h-0">
-        <h3 className="text-[15px] font-bold text-gray-900 dark:text-white leading-snug">
+        <h3 className="text-[15px] font-bold text-[#1a2332] dark:text-white/90 leading-snug tracking-tight">
           {project.website ? (
             <a href={project.website} target="_blank" rel="noopener noreferrer">{project.title}</a>
           ) : (
@@ -255,7 +255,7 @@ function CardContent({
             {venues.map((v, i) => (
               <span
                 key={i}
-                className="text-[10px] bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 px-2 py-0.5 rounded-full font-medium leading-tight"
+                className="text-[10px] bg-gradient-to-r from-blue-500/10 to-indigo-500/10 dark:from-blue-400/15 dark:to-indigo-400/15 text-blue-700 dark:text-blue-300 px-2 py-0.5 rounded-full font-semibold leading-tight border border-blue-200/30 dark:border-blue-400/10"
               >
                 {v}
               </span>
@@ -264,17 +264,17 @@ function CardContent({
         )}
 
         {tldr && (
-          <p className="mt-2 text-xs text-gray-500 dark:text-gray-400 line-clamp-3 leading-relaxed">
+          <p className="mt-2 text-xs text-[#6b7a8d] dark:text-white/40 line-clamp-3 leading-relaxed">
             {tldr}
           </p>
         )}
 
         {project.authors && (
-          <p className="mt-1.5 text-[10px] text-gray-400 dark:text-gray-500 leading-relaxed">
+          <p className="mt-1.5 text-[10px] text-[#8b95a5] dark:text-white/30 leading-relaxed">
             {project.authors.map((a, i) => (
               <span key={i}>
                 {a.includes('Wenli Xiao') ? (
-                  <span className="font-bold text-gray-600 dark:text-gray-300">{a}</span>
+                  <span className="font-bold text-[#2d3f54] dark:text-white/70">{a}</span>
                 ) : a}
                 {i < project.authors!.length - 1 ? ', ' : ''}
               </span>
@@ -283,7 +283,7 @@ function CardContent({
         )}
 
         {/* Action row */}
-        <div className="flex items-center gap-2 flex-wrap pt-3 mt-auto border-t border-gray-100 dark:border-[#222]">
+        <div className="flex items-center gap-2 flex-wrap pt-3 mt-auto border-t border-[#1a2332]/[0.06] dark:border-white/[0.06]">
           {project.arxiv && <ActionPill href={project.arxiv} label="arXiv" />}
           {project.website && <ActionPill href={project.website} label="Website" />}
           {project.code && (
@@ -306,7 +306,7 @@ function ActionPill({ href, label }: { href: string; label: string }) {
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="text-[11px] font-medium text-gray-600 dark:text-gray-300 px-2.5 py-1 rounded-full bg-gray-100/60 dark:bg-white/10 backdrop-blur-sm border border-gray-200/50 dark:border-white/10 active:bg-gray-200 dark:active:bg-white/20 transition-colors select-none"
+      className="text-[11px] font-medium text-[#4a5568] dark:text-white/50 px-2.5 py-1 rounded-full bg-white/40 dark:bg-white/[0.06] backdrop-blur-sm border border-white/60 dark:border-white/[0.08] active:bg-white/70 dark:active:bg-white/10 transition-colors select-none"
       onClick={(e) => e.stopPropagation()}
     >
       {label}
