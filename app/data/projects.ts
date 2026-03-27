@@ -70,21 +70,6 @@ export const projects: Project[] = [
     authors: ["Wenli Xiao*", "Haoru Xue*", "Tony Tao", "Dvij Kalaria", "John Dolan", "Guanya Shi"]
   },
   {
-    id: 'softa',
-    title: "Hold My Beer: Learning Gentle Humanoid Locomotion and End-Effector Stabilization Control",
-    image: "/images/softa.gif",
-    imageType: "gif",
-    category: "humanoid",
-    role: "Mentor",
-    points: [
-      "TL;DR: SoFTA is a slow-fast two-agent sim2real RL framework achieving human-level end-effector stability for humanoids."
-    ],
-    arxiv: "https://arxiv.org/abs/2505.24198",
-    website: "https://lecar-lab.github.io/SoFTA/",
-    code: "https://github.com/LeCAR-Lab/SoFTA",
-    authors: ["Yitang Li", "Yuanhang Zhang", "Wenli Xiao", "Chaoyi Pan", "Haoyang Weng", "Guanqi He", "Tairan He", "Guanya Shi"]
-  },
-  {
     id: 'asap',
     title: "ASAP: Aligning Simulation and Real-World Physics",
     image: "/images/ASAP.gif",
@@ -100,6 +85,84 @@ export const projects: Project[] = [
     code: "https://github.com/LeCAR-Lab/ASAP",
     twitter: "https://x.com/_wenlixiao/status/1886805380354728392",
     authors: ["Tairan He*", "Jiawei Gao*", "Wenli Xiao*", "Yuanhang Zhang*", "Zi Wang", "Jiashun Wang", "Zhengyi Luo", "Guanqi He", "Nikhil Sobanbab", "Chaoyi Pan", "Zeji Yi", "Guannan Qu", "Kris Kitani", "Jessica Hodgins", "Linxi 'Jim' Fan", "Yuke Zhu", "Changliu Liu", "Guanya Shi"]
+  },
+  {
+    id: 'sonic',
+    title: "SONIC: Supersizing Motion Tracking for Natural Humanoid Whole-Body Control",
+    image: "/images/sonic.gif",
+    imageType: "gif",
+    category: "humanoid",
+    role: "Core Engineer",
+    points: [
+      "TL;DR: SONIC is a general humanoid whole-body motion tracker supporting various control modes."
+    ],
+    arxiv: "https://arxiv.org/abs/2511.07820",
+    website: "https://nvlabs.github.io/SONIC/",
+    twitter: "https://x.com/zhengyiluo/status/1988277780258386038",
+    authors: ["Zhengyi Luo", "Ye Yuan", "Tingwu Wang", "Chenran Li", "Sirui Chen", "Fernando Castañeda", "Zi-Ang Cao", "Jiefeng Li", "David Minor", "Qingwei Ben", "Xingye Da", "Runyu Ding", "Cyrus Hogg", "Lina Song", "Edy Lim", "Eugene Jeong", "Tairan He", "Haoru Xue", "Wenli Xiao", "Zi Wang", "Simon Yuen", "Jan Kautz", "Yan Chang", "Umar Iqbal", "Linxi \"Jim\" Fan", "Yuke Zhu"]
+  },
+  {
+    id: 'doorman',
+    title: "DoorMan: Opening the Sim-to-Real Door for Humanoid Pixel-to-Action Policy Transfer",
+    image: "/images/doorman.gif",
+    imageType: "gif",
+    category: "humanoid",
+    role: "Core Engineer",
+    points: [
+      "TL;DR: DoorMan is a teacher-student-bootstrap framework for humanoid loco-manipulation, achieving 31.7% faster than human performance on real-world door opening."
+    ],
+    arxiv: "https://arxiv.org/abs/2512.01061",
+    website: "https://doorman-humanoid.github.io/",
+    twitter: "https://x.com/HaoruXue/status/1995903819964899498",
+    authors: ["Haoru Xue*", "Tairan He*", "Zi Wang*", "Qingwei Ben", "Wenli Xiao", "Zhengyi Luo", "Ye Yuan", "Xingye Da", "Fernando Castañeda", "Guanya Shi", "Shankar Sastry", "Linxi \"Jim\" Fan", "Yuke Zhu"]
+  },
+  {
+    id: 'viral',
+    title: "VIRAL: Visual Sim-to-Real at Scale for Humanoid Loco-Manipulation",
+    image: "/images/viral.gif",
+    imageType: "gif",
+    category: "humanoid",
+    role: "Core Engineer",
+    points: [
+      "TL;DR: VIRAL investigates the scaling law of visual sim-to-real for humanoid loco-manipulation with zero-shot, robust, continuous real-world deployment."
+    ],
+    arxiv: "https://arxiv.org/abs/2511.15200",
+    website: "https://viral-humanoid.github.io/",
+    twitter: "https://x.com/TairanHe99/status/1991546857097687372",
+    authors: ["Tairan He*", "Zi Wang*", "Haoru Xue*", "Qingwei Ben*", "Zhengyi Luo", "Wenli Xiao", "Ye Yuan", "Xingye Da", "Fernando Castañeda", "Shankar Sastry", "Changliu Liu", "Guanya Shi", "Linxi \"Jim\" Fan", "Yuke Zhu"]
+  },
+  {
+    id: 'softa',
+    title: "Hold My Beer: Learning Gentle Humanoid Locomotion and End-Effector Stabilization Control",
+    image: "/images/softa.gif",
+    imageType: "gif",
+    category: "humanoid",
+    role: "Mentor",
+    points: [
+      "TL;DR: SoFTA is a slow-fast two-agent sim2real RL framework achieving human-level end-effector stability for humanoids."
+    ],
+    arxiv: "https://arxiv.org/abs/2505.24198",
+    website: "https://lecar-lab.github.io/SoFTA/",
+    code: "https://github.com/LeCAR-Lab/SoFTA",
+    authors: ["Yitang Li", "Yuanhang Zhang", "Wenli Xiao", "Chaoyi Pan", "Haoyang Weng", "Guanqi He", "Tairan He", "Guanya Shi"]
+  },
+  {
+    id: 'omnih2o',
+    title: "OmniH2O: Universal and Dexterous Human-to-Humanoid Whole-Body Teleoperation and Learning",
+    image: "/images/omnih2o.gif",
+    imageType: "gif",
+    category: "humanoid",
+    role: "Core Engineer",
+    points: [
+      "CoRL 2024",
+      "TL;DR: OmniH2O provides the first universal whole-body humanoid control interface that enables diverse teleoperation and autonomy methods."
+    ],
+    arxiv: "https://arxiv.org/abs/2406.08858",
+    website: "https://omni.human2humanoid.com/",
+    video: "https://www.youtube.com/watch?v=ofgxZHv0GMk",
+    twitter: "https://x.com/TairanHe99/status/1799053120846402012",
+    code: "https://github.com/LeCAR-Lab/human2humanoid",
+    authors: ["Tairan He*", "Zhengyi Luo*", "Xialin He*", "Wenli Xiao", "Chong Zhang", "Weinan Zhang", "Kris Kitani", "Changliu Liu", "Guanya Shi"]
   },
   {
     id: 'wococo',
@@ -119,24 +182,6 @@ export const projects: Project[] = [
     twitter: "https://x.com/_wenlixiao/status/1801305252760850903",
     code: "https://github.com/LeCAR-Lab/wococo",
     authors: ["Chong Zhang*", "Wenli Xiao*", "Tairan He", "Guanya Shi"]
-  },
-  {
-    id: 'omnih2o',
-    title: "OmniH2O: Universal and Dexterous Human-to-Humanoid Whole-Body Teleoperation and Learning",
-    image: "/images/omnih2o.gif",
-    imageType: "gif",
-    category: "humanoid",
-    role: "Core Engineer",
-    points: [
-      "CoRL 2024",
-      "TL;DR: OmniH2O provides the first universal whole-body humanoid control interface that enables diverse teleoperation and autonomy methods."
-    ],
-    arxiv: "https://arxiv.org/abs/2406.08858",
-    website: "https://omni.human2humanoid.com/",
-    video: "https://www.youtube.com/watch?v=ofgxZHv0GMk",
-    twitter: "https://x.com/TairanHe99/status/1799053120846402012",
-    code: "https://github.com/LeCAR-Lab/human2humanoid",
-    authors: ["Tairan He*", "Zhengyi Luo*", "Xialin He*", "Wenli Xiao", "Chong Zhang", "Weinan Zhang", "Kris Kitani", "Changliu Liu", "Guanya Shi"]
   },
   {
     id: 'h2o',

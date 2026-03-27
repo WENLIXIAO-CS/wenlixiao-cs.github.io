@@ -6,6 +6,7 @@ import type { Project } from '../data/projects';
 interface Props {
   projects: Project[];
   getStars: (code?: string) => number | undefined;
+  onSwipeOverflow?: (dir: 'left' | 'right') => void;
 }
 
 function getVideoSources(gifPath: string) {
@@ -13,7 +14,7 @@ function getVideoSources(gifPath: string) {
   return { webm: `/videos/${name}.webm`, mp4: `/videos/${name}.mp4` };
 }
 
-export default function MobileProjectDeck({ projects, getStars }: Props) {
+export default function MobileProjectDeck({ projects, getStars, onSwipeOverflow }: Props) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [offset, setOffset] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
@@ -71,6 +72,10 @@ export default function MobileProjectDeck({ projects, getStars }: Props) {
 
       if (canGo) {
         setExitDir(dir);
+        return;
+      } else if (onSwipeOverflow) {
+        onSwipeOverflow(dir);
+        setOffset(0);
         return;
       }
     }

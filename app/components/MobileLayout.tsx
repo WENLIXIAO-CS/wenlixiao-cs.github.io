@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import ProfileCard from './ProfileCard';
 import TabBar from './TabBar';
 import ExperienceCard from './ExperienceCard';
@@ -40,6 +40,18 @@ export default function MobileLayout() {
   const [activeCategory, setActiveCategory] = useState('foundation');
   const [activeSection, setActiveSection] = useState('experience');
 
+  const categoryOrder = ['foundation', 'humanoid', 'mobility'];
+
+  const handleSwipeOverflow = useCallback((dir: 'left' | 'right') => {
+    if (activeCategory === 'all') return;
+    const idx = categoryOrder.indexOf(activeCategory);
+    if (dir === 'left' && idx < categoryOrder.length - 1) {
+      setActiveCategory(categoryOrder[idx + 1]);
+    } else if (dir === 'right' && idx > 0) {
+      setActiveCategory(categoryOrder[idx - 1]);
+    }
+  }, [activeCategory]);
+
   const filteredProjects = activeCategory === 'all'
     ? projects
     : projects.filter(p => p.category === activeCategory);
@@ -77,8 +89,10 @@ export default function MobileLayout() {
               onTabChange={setActiveCategory}
             />
             <MobileProjectDeck
+              key={activeCategory}
               projects={filteredProjects}
               getStars={getStars}
+              onSwipeOverflow={handleSwipeOverflow}
             />
           </div>
         )}
