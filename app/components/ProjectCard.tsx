@@ -42,7 +42,7 @@ export default function ProjectCard({
   const videoSources = imageType === 'gif' ? getVideoSources(image) : null;
 
   return (
-    <div className="flex flex-col md:flex-row items-start bg-white/70 dark:bg-[#111]/70 backdrop-blur-xl border border-white/40 dark:border-white/10 p-6 rounded-3xl shadow-md max-w-6xl mx-auto space-y-6 md:space-y-0 md:space-x-10 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:bg-white/80 dark:hover:bg-[#111]/80 group">
+    <div className="flex flex-col md:flex-row items-start bg-white/45 dark:bg-white/[0.04] backdrop-blur-2xl backdrop-saturate-150 border border-white/60 dark:border-white/[0.06] p-6 rounded-3xl shadow-[0_8px_40px_rgba(100,120,180,0.08),0_2px_8px_rgba(100,120,180,0.04)] dark:shadow-[0_8px_40px_rgba(0,0,0,0.2)] max-w-6xl mx-auto space-y-6 md:space-y-0 md:space-x-10 transition-all duration-300 hover:shadow-[0_12px_48px_rgba(100,120,180,0.14),0_4px_12px_rgba(100,120,180,0.06)] dark:hover:shadow-[0_12px_48px_rgba(0,0,0,0.3)] hover:-translate-y-1 hover:bg-white/60 dark:hover:bg-white/[0.06] group">
       <div className="w-full md:w-[500px] h-[300px] relative rounded-2xl overflow-hidden bg-gray-100 dark:bg-[#222] transition-transform duration-300 group-hover:scale-[1.02]">
         {videoSources ? (
           <video
@@ -91,7 +91,7 @@ export default function ProjectCard({
       </div>
 
       <div className="flex-1 relative">
-        <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-2">
+        <h2 className="text-2xl md:text-3xl font-bold text-[#1a2332] dark:text-white/90 mb-2">
           {website ? (
             <a
               href={website}
@@ -105,7 +105,7 @@ export default function ProjectCard({
             title
           )}
         </h2>
-        <div className="text-sm text-gray-500 dark:text-gray-400 mb-4">
+        <div className="text-sm text-[#6b7a8d] dark:text-white/40 mb-4">
           {points.map((point, index) => (
             <div key={index} className="mb-1">
               {point}

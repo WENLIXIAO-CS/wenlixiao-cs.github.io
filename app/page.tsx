@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ProfileCard from "./components/ProfileCard";
 import ProjectCard from "./components/ProjectCard";
 import TabBar from "./components/TabBar";
@@ -10,6 +10,7 @@ import ServiceCard from "./components/ServiceCard";
 import NewsCard from "./components/NewsCard";
 import ThemeToggle from "./components/ThemeToggle";
 import MobileLayout from "./components/MobileLayout";
+import ScrollReveal from "./components/ScrollReveal";
 import { projects } from "./data/projects";
 import { experiences, educations, services } from "./data/background";
 import { newsItems } from "./data/news";
@@ -34,9 +35,36 @@ function getStars(codeUrl?: string): number | undefined {
   return repoPath ? (starsData as Record<string, number>)[repoPath] : undefined;
 }
 
+const navSections = ['news', 'research', 'background'] as const;
+
 export default function Home() {
   const [activeCategory, setActiveCategory] = useState('foundation');
   const [activeSection, setActiveSection] = useState('experience');
+  const [activeNav, setActiveNav] = useState('');
+
+  useEffect(() => {
+    const observers: IntersectionObserver[] = [];
+    const visibleSections = new Set<string>();
+
+    navSections.forEach(id => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) visibleSections.add(id);
+          else visibleSections.delete(id);
+          // Pick the first visible section in DOM order
+          const current = navSections.find(s => visibleSections.has(s));
+          setActiveNav(current || '');
+        },
+        { threshold: 0.15 }
+      );
+      observer.observe(el);
+      observers.push(observer);
+    });
+
+    return () => observers.forEach(o => o.disconnect());
+  }, []);
 
   const filteredProjects = activeCategory === 'all'
     ? projects
@@ -49,128 +77,172 @@ export default function Home() {
         <MobileLayout />
       </div>
 
-      {/* Desktop: traditional scrolling layout */}
-      <div className="hidden md:block min-h-screen bg-[#fafafa] dark:bg-[#000000]">
+      {/* Desktop: scrolling layout with glassmorphism */}
+      <div className="hidden md:block min-h-screen bg-[#e8ecf1] dark:bg-[#0a0c12] relative overflow-hidden">
+        {/* Background gradient orbs */}
+        <div className="fixed inset-0 pointer-events-none z-0">
+          <div className="absolute -top-32 -left-32 w-[500px] h-[500px] bg-blue-300/20 dark:bg-blue-500/10 rounded-full blur-[120px]" />
+          <div className="absolute top-[20%] right-0 w-[400px] h-[400px] bg-indigo-300/15 dark:bg-indigo-500/8 rounded-full blur-[100px]" />
+          <div className="absolute top-[50%] -left-20 w-[350px] h-[350px] bg-violet-300/10 dark:bg-violet-500/5 rounded-full blur-[100px]" />
+          <div className="absolute top-[70%] right-[10%] w-[300px] h-[300px] bg-cyan-300/10 dark:bg-cyan-500/5 rounded-full blur-[80px]" />
+          <div className="absolute bottom-0 left-[30%] w-[400px] h-[400px] bg-rose-300/8 dark:bg-rose-500/3 rounded-full blur-[100px]" />
+        </div>
+
         {/* Navigation */}
-        <nav className="fixed top-0 w-full bg-white/60 dark:bg-[#000]/60 backdrop-blur-xl z-50 border-b border-white/30 dark:border-white/10">
+        <nav className="fixed top-0 w-full bg-white/40 dark:bg-[#0a0c12]/50 backdrop-blur-2xl backdrop-saturate-150 z-50 border-b border-white/30 dark:border-white/[0.06]">
           <div className="max-w-[1200px] mx-auto px-6">
             <div className="flex justify-between items-center h-16">
-              <div className="text-lg font-medium text-black dark:text-white">Wenli Xiao</div>
-              <div className="flex items-center gap-6">
-                <a href="#news" className="text-sm text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors">News</a>
-                <a href="#research" className="text-sm text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors">Research</a>
-                <a href="#background" className="text-sm text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors">Background</a>
-                <a href="/blog" className="text-sm text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors">Blog</a>
-                <ThemeToggle />
+              <div className="text-lg font-semibold text-[#1a2332] dark:text-white/90 tracking-tight">Wenli Xiao</div>
+              <div className="flex items-center gap-1">
+                {navSections.map(id => (
+                  <a
+                    key={id}
+                    href={`#${id}`}
+                    className={`relative text-sm px-3 py-1.5 rounded-full transition-all duration-300 ${
+                      activeNav === id
+                        ? 'text-[#1a2332] dark:text-white/90 bg-[#1a2332]/8 dark:bg-white/10 font-medium'
+                        : 'text-[#6b7a8d] dark:text-white/40 hover:text-[#1a2332] dark:hover:text-white/80'
+                    }`}
+                  >
+                    {id.charAt(0).toUpperCase() + id.slice(1)}
+                  </a>
+                ))}
+                <a href="/blog" className="text-sm px-3 py-1.5 rounded-full text-[#6b7a8d] dark:text-white/40 hover:text-[#1a2332] dark:hover:text-white/80 transition-colors">Blog</a>
+                <div className="ml-2">
+                  <ThemeToggle />
+                </div>
               </div>
             </div>
           </div>
         </nav>
 
         {/* Hero Section */}
-        <section className="pt-32 pb-16 px-6">
+        <section className="pt-32 pb-16 px-6 relative z-10">
           <div className="max-w-[1200px] mx-auto">
-            <ProfileCard />
+            <ScrollReveal>
+              <ProfileCard />
+            </ScrollReveal>
           </div>
         </section>
 
         {/* News Section */}
-        <section id="news" className="py-16 px-6 bg-white dark:bg-[#111] border-t border-b border-gray-100 dark:border-[#222]">
+        <section id="news" className="py-16 px-6 relative z-10">
           <div className="max-w-[1200px] mx-auto">
-            <h2 className="text-2xl font-bold mb-12 text-black dark:text-white">News</h2>
-            <NewsCard items={newsItems} />
+            <ScrollReveal>
+              <h2 className="text-2xl font-bold mb-12 text-[#1a2332] dark:text-white/90">News</h2>
+            </ScrollReveal>
+            <ScrollReveal delay={100}>
+              <div className="bg-white/45 dark:bg-white/[0.04] backdrop-blur-2xl backdrop-saturate-150 rounded-3xl border border-white/60 dark:border-white/[0.06] shadow-[0_8px_40px_rgba(100,120,180,0.08)] dark:shadow-[0_8px_40px_rgba(0,0,0,0.2)] p-8">
+                <NewsCard items={newsItems} />
+              </div>
+            </ScrollReveal>
           </div>
         </section>
 
         {/* Projects Section */}
-        <section id="research" className="py-16 px-6 bg-[#fafafa] dark:bg-[#000] border-b border-gray-100 dark:border-[#222]">
+        <section id="research" className="py-16 px-6 relative z-10">
           <div className="max-w-[1200px] mx-auto">
-            <h2 className="text-2xl font-bold mb-12 text-black dark:text-white">Research Projects</h2>
-            <TabBar
-              tabs={projectTabs}
-              activeKey={activeCategory}
-              onTabChange={setActiveCategory}
-            />
+            <ScrollReveal>
+              <h2 className="text-2xl font-bold mb-12 text-[#1a2332] dark:text-white/90">Research Projects</h2>
+            </ScrollReveal>
+            <ScrollReveal delay={100}>
+              <TabBar
+                tabs={projectTabs}
+                activeKey={activeCategory}
+                onTabChange={setActiveCategory}
+              />
+            </ScrollReveal>
             <div className="space-y-12">
-              {filteredProjects.map((project) => (
-                <ProjectCard
-                  key={project.id}
-                  title={project.title}
-                  image={project.image}
-                  imageType={project.imageType}
-                  points={project.points}
-                  arxiv={project.arxiv}
-                  website={project.website}
-                  video={project.video}
-                  code={project.code}
-                  twitter={project.twitter}
-                  pdf={project.pdf}
-                  authors={project.authors}
-                  role={project.role}
-                  stars={getStars(project.code)}
-                />
+              {filteredProjects.map((project, i) => (
+                <ScrollReveal key={project.id} delay={i < 3 ? i * 80 : 0}>
+                  <ProjectCard
+                    title={project.title}
+                    image={project.image}
+                    imageType={project.imageType}
+                    points={project.points}
+                    arxiv={project.arxiv}
+                    website={project.website}
+                    video={project.video}
+                    code={project.code}
+                    twitter={project.twitter}
+                    pdf={project.pdf}
+                    authors={project.authors}
+                    role={project.role}
+                    stars={getStars(project.code)}
+                  />
+                </ScrollReveal>
               ))}
             </div>
           </div>
         </section>
 
         {/* Background Section */}
-        <section id="background" className="py-16 px-6 bg-white dark:bg-[#111]">
+        <section id="background" className="py-16 px-6 relative z-10">
           <div className="max-w-[1200px] mx-auto">
-            <h2 className="text-2xl font-bold mb-12 text-black dark:text-white">Background</h2>
-            <TabBar
-              tabs={sectionTabs}
-              activeKey={activeSection}
-              onTabChange={setActiveSection}
-            />
+            <ScrollReveal>
+              <h2 className="text-2xl font-bold mb-12 text-[#1a2332] dark:text-white/90">Background</h2>
+            </ScrollReveal>
+            <ScrollReveal delay={100}>
+              <TabBar
+                tabs={sectionTabs}
+                activeKey={activeSection}
+                onTabChange={setActiveSection}
+              />
+            </ScrollReveal>
 
             {activeSection === 'experience' && (
-              <div className="relative">
-                <div className="overflow-x-auto pb-6 hide-scrollbar scroll-smooth snap-x snap-mandatory">
-                  <div className="flex gap-6 min-w-max px-8 py-4">
-                    {experiences.map((exp, i) => (
-                      <ExperienceCard key={i} {...exp} />
-                    ))}
+              <ScrollReveal>
+                <div className="relative">
+                  <div className="overflow-x-auto pb-6 hide-scrollbar scroll-smooth snap-x snap-mandatory">
+                    <div className="flex gap-6 min-w-max px-8 py-4">
+                      {experiences.map((exp, i) => (
+                        <ExperienceCard key={i} {...exp} />
+                      ))}
+                    </div>
                   </div>
+                  <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-[#e8ecf1] dark:from-[#0a0c12] to-transparent pointer-events-none"></div>
+                  <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-[#e8ecf1] dark:from-[#0a0c12] to-transparent pointer-events-none"></div>
                 </div>
-                <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-white dark:from-[#111] to-transparent pointer-events-none"></div>
-                <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-white dark:from-[#111] to-transparent pointer-events-none"></div>
-              </div>
+              </ScrollReveal>
             )}
 
             {activeSection === 'education' && (
-              <div className="relative">
-                <div className="overflow-x-auto pb-6 hide-scrollbar scroll-smooth snap-x snap-mandatory">
-                  <div className="flex gap-6 min-w-max px-8 py-4">
-                    {educations.map((edu, i) => (
-                      <EducationCard key={i} {...edu} />
-                    ))}
+              <ScrollReveal>
+                <div className="relative">
+                  <div className="overflow-x-auto pb-6 hide-scrollbar scroll-smooth snap-x snap-mandatory">
+                    <div className="flex gap-6 min-w-max px-8 py-4">
+                      {educations.map((edu, i) => (
+                        <EducationCard key={i} {...edu} />
+                      ))}
+                    </div>
                   </div>
+                  <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-[#e8ecf1] dark:from-[#0a0c12] to-transparent pointer-events-none"></div>
+                  <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-[#e8ecf1] dark:from-[#0a0c12] to-transparent pointer-events-none"></div>
                 </div>
-                <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-white dark:from-[#111] to-transparent pointer-events-none"></div>
-                <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-white dark:from-[#111] to-transparent pointer-events-none"></div>
-              </div>
+              </ScrollReveal>
             )}
 
             {activeSection === 'service' && (
-              <div className="relative">
-                <div className="overflow-x-auto pb-6 hide-scrollbar scroll-smooth snap-x snap-mandatory">
-                  <div className="flex gap-6 min-w-max px-8 py-4">
-                    {services.map((svc, i) => (
-                      <ServiceCard key={i} {...svc} />
-                    ))}
+              <ScrollReveal>
+                <div className="relative">
+                  <div className="overflow-x-auto pb-6 hide-scrollbar scroll-smooth snap-x snap-mandatory">
+                    <div className="flex gap-6 min-w-max px-8 py-4">
+                      {services.map((svc, i) => (
+                        <ServiceCard key={i} {...svc} />
+                      ))}
+                    </div>
                   </div>
+                  <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-[#e8ecf1] dark:from-[#0a0c12] to-transparent pointer-events-none"></div>
+                  <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-[#e8ecf1] dark:from-[#0a0c12] to-transparent pointer-events-none"></div>
                 </div>
-                <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-white dark:from-[#111] to-transparent pointer-events-none"></div>
-                <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-white dark:from-[#111] to-transparent pointer-events-none"></div>
-              </div>
+              </ScrollReveal>
             )}
           </div>
         </section>
 
         {/* Footer */}
-        <footer className="py-8 px-6 border-t border-[#eaeaea] dark:border-[#333]">
-          <div className="max-w-[1200px] mx-auto text-center text-gray-500 dark:text-gray-500">
+        <footer className="py-8 px-6 relative z-10 border-t border-white/20 dark:border-white/[0.04]">
+          <div className="max-w-[1200px] mx-auto text-center text-[#8b95a5] dark:text-white/30">
             &copy; {new Date().getFullYear()} Wenli Xiao. All rights reserved.
           </div>
         </footer>
