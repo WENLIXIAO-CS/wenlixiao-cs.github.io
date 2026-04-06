@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:haoruxue.github.io)",
+      "WebFetch(domain:nvlabs.github.io)",
+      "WebFetch(domain:doorman-humanoid.github.io)",
+      "WebFetch(domain:viral-humanoid.github.io)"
+    ]
+  },
+  "sandbox": {
+    "enabled": false,
+    "autoAllowBashIfSandboxed": false
+  }
+}
