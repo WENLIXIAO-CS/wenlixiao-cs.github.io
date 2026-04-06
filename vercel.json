@@ -2,11 +2,11 @@
   "rewrites": [
     {
       "source": "/self-improve-VLA-PLD/:path*",
-      "destination": "https://pld-paper-website.vercel.app/self-improve-VLA-PLD/:path*"
+      "destination": "https://pld-website.vercel.app/self-improve-VLA-PLD/:path*"
     },
     {
       "source": "/self-improve-VLA-PLD",
-      "destination": "https://pld-paper-website.vercel.app/self-improve-VLA-PLD/"
+      "destination": "https://pld-website.vercel.app/self-improve-VLA-PLD/"
     }
   ]
 }
