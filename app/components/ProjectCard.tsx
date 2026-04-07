@@ -50,7 +50,7 @@ export default function ProjectCard({
             loop
             muted
             playsInline
-            preload="none"
+            preload="auto"
             className="w-full h-full object-cover"
           >
             <source src={videoSources.webm} type="video/webm" />

@@ -34,6 +34,22 @@ export const projects: Project[] = [
     authors: ["Wenli Xiao*", "Haotian Lin*", "Andy Peng", "Haoru Xue", "Tairan He", "Yuqi Xie", "Fengyuan Hu", "Jimmy Wu", "Zhengyi Luo", "Linxi \"Jim\" Fan\u2020", "Guanya Shi", "Yuke Zhu\u2020"]
   },
   {
+    id: 'capx',
+    title: "CaP-X: Benchmarking and Improving Coding Agents for Robot Manipulation",
+    image: "/images/capx.gif",
+    imageType: "gif",
+    category: "foundation",
+    role: "Core Contributor",
+    points: [
+      "ArXiv 2026",
+      "TL;DR: CaP-X introduces CaP-Agent0, a training-free agentic framework enabling off-the-shelf LLMs to perform robotic manipulation via code generation, and CaP-Bench, a comprehensive evaluation suite of 100+ tasks. Frontier models achieve 30%+ zero-shot success on unseen tasks with 18% on perturbed tasks (vs. 0% for VLA models), and a 7B model improves from 20% to 72% in sim with 84% real-world transfer."
+    ],
+    arxiv: "https://arxiv.org/abs/2603.22435",
+    website: "https://capgym.github.io/",
+    code: "https://github.com/capgym/cap-x",
+    authors: ["Letian Fu*", "Justin Yu*", "Karim El-Refai*", "Ethan Kou", "Haoru Xue", "Huang Huang", "Wenli Xiao", "Guanzhi Wang", "Fei-Fei Li", "Guanya Shi", "Jiajun Wu", "Shankar Sastry", "Yuke Zhu", "Ken Goldberg", "Linxi \"Jim\" Fan"]
+  },
+  {
     id: 'hover',
     title: "HOVER: Versatile Neural Whole-Body Controller for Humanoid Robots",
     image: "/images/hover.gif",
