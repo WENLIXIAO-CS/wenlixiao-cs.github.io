@@ -3,9 +3,7 @@
 import { useState, useCallback } from 'react';
 import ProfileCard from './ProfileCard';
 import TabBar from './TabBar';
-import ExperienceCard from './ExperienceCard';
-import EducationCard from './EducationCard';
-import ServiceCard from './ServiceCard';
+import Timeline from './Timeline';
 import NewsCard from './NewsCard';
 import ThemeToggle from './ThemeToggle';
 import MobileProjectDeck from './MobileProjectDeck';
@@ -23,11 +21,6 @@ const projectTabs = [
   { key: 'all', label: 'All' },
 ];
 
-const sectionTabs = [
-  { key: 'experience', label: 'Experience' },
-  { key: 'education', label: 'Education' },
-  { key: 'service', label: 'Service' },
-];
 
 function getStars(codeUrl?: string): number | undefined {
   if (!codeUrl || !codeUrl.includes('github.com')) return undefined;
@@ -38,7 +31,7 @@ function getStars(codeUrl?: string): number | undefined {
 export default function MobileLayout() {
   const [activeTab, setActiveTab] = useState<MobileTab>('projects');
   const [activeCategory, setActiveCategory] = useState('foundation');
-  const [activeSection, setActiveSection] = useState('experience');
+
 
   const categoryOrder = ['foundation', 'humanoid', 'mobility'];
 
@@ -109,36 +102,13 @@ export default function MobileLayout() {
 
         {activeTab === 'background' && (
           <div className="px-4 pt-5">
-            <h2 className="text-xl font-bold text-[#1a2332] dark:text-white/90 mb-4 tracking-tight">Background</h2>
-            <TabBar
-              tabs={sectionTabs}
-              activeKey={activeSection}
-              onTabChange={setActiveSection}
+            <h2 className="text-xl font-bold text-[#1a2332] dark:text-white/90 mb-5 tracking-tight">Background</h2>
+            <Timeline
+              experiences={experiences}
+              educations={educations}
+              services={services}
+              compact
             />
-
-            {activeSection === 'experience' && (
-              <div className="space-y-4 mt-2">
-                {experiences.map((exp, i) => (
-                  <ExperienceCard key={i} {...exp} />
-                ))}
-              </div>
-            )}
-
-            {activeSection === 'education' && (
-              <div className="space-y-4 mt-2">
-                {educations.map((edu, i) => (
-                  <EducationCard key={i} {...edu} />
-                ))}
-              </div>
-            )}
-
-            {activeSection === 'service' && (
-              <div className="space-y-4 mt-2">
-                {services.map((svc, i) => (
-                  <ServiceCard key={i} {...svc} />
-                ))}
-              </div>
-            )}
           </div>
         )}
       </main>

@@ -48,7 +48,7 @@ export const experiences: Experience[] = [
   {
     title: "Research Intern",
     company: "NCEL Lab, Shenzhen AIRS",
-    period: "Aug 2020 - March 2022",
+    period: "Aug 2020 - Feb 2022",
     description: "",
     icon: "/images/airs-logo.jpeg",
     advisor: "Prof. Jianwei Huang\nProf. Bing Luo"

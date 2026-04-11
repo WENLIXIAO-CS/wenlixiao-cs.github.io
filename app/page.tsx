@@ -4,9 +4,7 @@ import { useState, useEffect } from "react";
 import ProfileCard from "./components/ProfileCard";
 import ProjectCard from "./components/ProjectCard";
 import TabBar from "./components/TabBar";
-import ExperienceCard from "./components/ExperienceCard";
-import EducationCard from "./components/EducationCard";
-import ServiceCard from "./components/ServiceCard";
+import Timeline from "./components/Timeline";
 import NewsCard from "./components/NewsCard";
 import ThemeToggle from "./components/ThemeToggle";
 import MobileLayout from "./components/MobileLayout";
@@ -23,11 +21,6 @@ const projectTabs = [
   { key: 'all', label: 'All' },
 ];
 
-const sectionTabs = [
-  { key: 'experience', label: 'Experience' },
-  { key: 'education', label: 'Education' },
-  { key: 'service', label: 'Service' },
-];
 
 function getStars(codeUrl?: string): number | undefined {
   if (!codeUrl || !codeUrl.includes('github.com')) return undefined;
@@ -39,7 +32,6 @@ const navSections = ['news', 'research', 'background'] as const;
 
 export default function Home() {
   const [activeCategory, setActiveCategory] = useState('foundation');
-  const [activeSection, setActiveSection] = useState('experience');
   const [activeNav, setActiveNav] = useState('');
 
   useEffect(() => {
@@ -180,63 +172,15 @@ export default function Home() {
         <section id="background" className="py-16 px-6 relative z-10">
           <div className="max-w-[1200px] mx-auto">
             <ScrollReveal>
-              <h2 className="text-2xl font-bold mb-12 text-[#1a2332] dark:text-white/90">Background</h2>
+              <h2 className="text-2xl font-bold mb-10 text-[#1a2332] dark:text-white/90">Background</h2>
             </ScrollReveal>
             <ScrollReveal delay={100}>
-              <TabBar
-                tabs={sectionTabs}
-                activeKey={activeSection}
-                onTabChange={setActiveSection}
+              <Timeline
+                experiences={experiences}
+                educations={educations}
+                services={services}
               />
             </ScrollReveal>
-
-            {activeSection === 'experience' && (
-              <ScrollReveal>
-                <div className="relative">
-                  <div className="overflow-x-auto pb-6 hide-scrollbar scroll-smooth snap-x snap-mandatory">
-                    <div className="flex gap-6 min-w-max px-8 py-4">
-                      {experiences.map((exp, i) => (
-                        <ExperienceCard key={i} {...exp} />
-                      ))}
-                    </div>
-                  </div>
-                  <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-[#e8ecf1] dark:from-[#0a0c12] to-transparent pointer-events-none"></div>
-                  <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-[#e8ecf1] dark:from-[#0a0c12] to-transparent pointer-events-none"></div>
-                </div>
-              </ScrollReveal>
-            )}
-
-            {activeSection === 'education' && (
-              <ScrollReveal>
-                <div className="relative">
-                  <div className="overflow-x-auto pb-6 hide-scrollbar scroll-smooth snap-x snap-mandatory">
-                    <div className="flex gap-6 min-w-max px-8 py-4">
-                      {educations.map((edu, i) => (
-                        <EducationCard key={i} {...edu} />
-                      ))}
-                    </div>
-                  </div>
-                  <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-[#e8ecf1] dark:from-[#0a0c12] to-transparent pointer-events-none"></div>
-                  <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-[#e8ecf1] dark:from-[#0a0c12] to-transparent pointer-events-none"></div>
-                </div>
-              </ScrollReveal>
-            )}
-
-            {activeSection === 'service' && (
-              <ScrollReveal>
-                <div className="relative">
-                  <div className="overflow-x-auto pb-6 hide-scrollbar scroll-smooth snap-x snap-mandatory">
-                    <div className="flex gap-6 min-w-max px-8 py-4">
-                      {services.map((svc, i) => (
-                        <ServiceCard key={i} {...svc} />
-                      ))}
-                    </div>
-                  </div>
-                  <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-[#e8ecf1] dark:from-[#0a0c12] to-transparent pointer-events-none"></div>
-                  <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-[#e8ecf1] dark:from-[#0a0c12] to-transparent pointer-events-none"></div>
-                </div>
-              </ScrollReveal>
-            )}
           </div>
         </section>
 
