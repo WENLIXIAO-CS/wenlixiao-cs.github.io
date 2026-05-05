@@ -41,7 +41,7 @@ export const projects: Project[] = [
     category: "foundation",
     role: "Core Contributor",
     points: [
-      "ArXiv 2026",
+      "ICML 2026",
       "TL;DR: CaP-X introduces CaP-Agent0, a training-free agentic framework enabling off-the-shelf LLMs to perform robotic manipulation via code generation, and CaP-Bench, a comprehensive evaluation suite of 100+ tasks. Frontier models achieve 30%+ zero-shot success on unseen tasks with 18% on perturbed tasks (vs. 0% for VLA models), and a 7B model improves from 20% to 72% in sim with 84% real-world transfer."
     ],
     arxiv: "https://arxiv.org/abs/2603.22435",
