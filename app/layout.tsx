@@ -1,6 +1,11 @@
 import type { Metadata } from "next";
-import { GeistSans } from 'geist/font'
+import { Source_Serif_4 } from 'next/font/google'
 import "./globals.css";
+
+const sourceSerif = Source_Serif_4({
+  subsets: ['latin'],
+  display: 'swap',
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://wenlixiao.com'),
@@ -54,8 +59,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var s=localStorage.getItem('theme');var d=s==='dark'||(!s&&window.matchMedia('(prefers-color-scheme: dark)').matches);document.documentElement.classList.toggle('dark',d);}catch(e){}})();`,
+          }}
+        />
+      </head>
       <body
-        className={`${GeistSans.className} antialiased`}
+        className={`${sourceSerif.className} antialiased`}
       >
         {children}
       </body>

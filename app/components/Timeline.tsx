@@ -336,7 +336,7 @@ function DotTimeline({ nodes, color }: { nodes: NodeData[]; color: 'blue' | 'eme
                     className="absolute -translate-x-1/2 -translate-y-1/2 z-10"
                     style={{ left: pos.startPx, top: '50%' }}
                   >
-                    <div className={`w-[10px] h-[10px] rounded-full ${c.dot} ring-3 ${c.ring}`} />
+                    <div className={`w-[10px] h-[10px] rounded-full ${c.dot} ring-[3px] ${c.ring}`} />
                   </div>
                   {/* End dot */}
                   <div
@@ -409,7 +409,7 @@ function VerticalTimeline({ nodes, color }: { nodes: NodeData[]; color: 'blue' |
             <div key={i} className="relative">
               {/* Dot on spine */}
               <div className="absolute -left-8 top-4">
-                <div className={`w-[10px] h-[10px] rounded-full ${c.dot} ring-3 ring-white/50 dark:ring-[#0a0c12]/50`} style={{ marginLeft: 6 }} />
+                <div className={`w-[10px] h-[10px] rounded-full ${c.dot} ring-[3px] ring-white/50 dark:ring-[#0a0c12]/50`} style={{ marginLeft: 6 }} />
                 {isPresent && (
                   <div className={`absolute inset-0 rounded-full ${c.dot} animate-ping opacity-30`} style={{ marginLeft: 6 }} />
                 )}
