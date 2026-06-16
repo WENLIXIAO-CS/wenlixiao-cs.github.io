@@ -19,6 +19,22 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    id: 'enpire',
+    title: "ENPIRE: Agentic Robot Policy Self-Improvement in the Real World",
+    image: "/images/enpire.gif",
+    imageType: "gif",
+    category: "foundation",
+    role: "Co-Lead",
+    points: [
+      "In submission",
+      "TL;DR: Physical Autoresearch on real-world Robot Fleet. ENPIRE lets coding agents autonomously improve robot manipulation policies through a closed-loop physical feedback system—automatic environment reset and verification, parallel robot rollouts, and evolutionary refinement—reaching a 99% success rate on challenging dexterous manipulation tasks."
+    ],
+    website: "https://research.nvidia.com/labs/gear/enpire/",
+    pdf: "https://drive.google.com/drive/folders/1J8w1yQux9ODYqTNZ2ynOIFjerBIQtw1V?usp=sharing",
+    twitter: "https://x.com/DrJimFan/status/2066921736369766762",
+    authors: ["Wenli Xiao*", "Jia Xie*", "Tonghe Zhang*", "Haotian Lin*", "Letian \"Max\" Fu", "Haoru Xue", "Jalen Lu", "Yi Yang", "Cunxi Dai", "Zi Wang", "Jimmy Wu", "Guanzhi Wang", "S. Shankar Sastry", "Ken Goldberg", "Linxi \"Jim\" Fan‡", "Yuke Zhu‡", "Guanya Shi‡"]
+  },
+  {
     id: 'pld',
     title: "Self-Improving Vision-Language-Action Models with Data Generation via Residual RL",
     image: "/images/pld-teaser.gif",
