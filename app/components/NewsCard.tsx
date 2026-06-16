@@ -3,6 +3,7 @@
 interface NewsItem {
   date: string;
   content: string;
+  href?: string;
 }
 
 interface NewsCardProps {
@@ -19,7 +20,18 @@ export default function NewsCard({ items }: NewsCardProps) {
               {item.date}
             </div>
             <div className="flex-1">
-              {item.content}
+              {item.href ? (
+                <a
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline hover:text-gray-900 dark:hover:text-white transition-colors"
+                >
+                  {item.content}
+                </a>
+              ) : (
+                item.content
+              )}
             </div>
           </div>
         </li>
