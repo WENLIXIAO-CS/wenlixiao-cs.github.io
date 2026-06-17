@@ -3,7 +3,7 @@ import Image from "next/image";
 export default function ProfileCard() {
   return (
     <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12">
-      <div className="w-48 h-48 md:w-64 md:h-64 relative rounded-full overflow-hidden border-4 border-white/70 dark:border-white/10 shadow-[0_8px_32px_rgba(100,120,180,0.12)] dark:shadow-[0_8px_32px_rgba(0,0,0,0.3)]">
+      <div className="w-48 h-48 md:w-64 md:h-64 relative rounded-full overflow-hidden border-4 border-white/70 dark:border-white/10 shadow-[0_8px_32px_rgba(70,55,40,0.12)] dark:shadow-[0_8px_32px_rgba(0,0,0,0.3)]">
         <Image
           src="/images/wenli-cmu.jpg"
           alt="Wenli Xiao"
@@ -54,7 +54,7 @@ function SocialPill({ href, label, icon }: { href: string; label: string; icon: 
       href={href}
       target={href.startsWith('mailto:') ? undefined : '_blank'}
       rel={href.startsWith('mailto:') ? undefined : 'noopener noreferrer'}
-      className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium text-[#4a5568] dark:text-white/50 bg-white/50 dark:bg-white/[0.06] backdrop-blur-sm border border-white/60 dark:border-white/[0.08] shadow-[0_2px_8px_rgba(100,120,180,0.06)] hover:bg-white/80 dark:hover:bg-white/10 hover:text-[#1a2332] dark:hover:text-white/80 hover:shadow-[0_4px_16px_rgba(100,120,180,0.1)] hover:-translate-y-0.5 transition-all duration-200"
+      className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium text-[#4a5568] dark:text-white/50 bg-[#fbf9f4]/85 dark:bg-white/[0.06] backdrop-blur-sm border border-white/60 dark:border-white/[0.08] shadow-[0_2px_8px_rgba(70,55,40,0.06)] hover:bg-[#fbf9f4]/95 dark:hover:bg-white/10 hover:text-[#1a2332] dark:hover:text-white/80 hover:shadow-[0_4px_16px_rgba(70,55,40,0.1)] hover:-translate-y-0.5 transition-all duration-200"
     >
       {icon}
       {label}

@@ -18,7 +18,7 @@ export default function EducationCard({
   icon
 }: EducationCardProps) {
   return (
-    <div className="w-full md:w-[360px] bg-white/45 dark:bg-white/[0.06] backdrop-blur-2xl backdrop-saturate-150 border border-white/60 dark:border-white/[0.08] p-6 rounded-2xl shadow-[0_4px_24px_rgba(100,120,180,0.08)] dark:shadow-[0_4px_24px_rgba(0,0,0,0.25)] hover:shadow-[0_8px_32px_rgba(100,120,180,0.14)] transition-shadow duration-300 snap-start" style={{ borderTopColor: 'rgba(255,255,255,0.8)', borderLeftColor: 'rgba(255,255,255,0.7)' }}>
+    <div className="w-full md:w-[360px] bg-[#fbf9f4]/80 dark:bg-white/[0.06] backdrop-blur-md border border-white/60 dark:border-white/[0.08] p-6 rounded-2xl shadow-[0_4px_24px_rgba(70,55,40,0.08)] dark:shadow-[0_4px_24px_rgba(0,0,0,0.25)] hover:shadow-[0_8px_32px_rgba(70,55,40,0.14)] transition-shadow duration-300 snap-start" style={{ borderTopColor: 'rgba(255,255,255,0.8)', borderLeftColor: 'rgba(255,255,255,0.7)' }}>
       <div className="flex items-start gap-4">
         <div className="w-12 h-12 relative rounded-xl overflow-hidden flex-shrink-0">
           <Image
@@ -38,7 +38,7 @@ export default function EducationCard({
               <div className="text-sm text-gray-600 dark:text-gray-300">
                 {advisor.split('\n').map((name, index) => (
                   <div key={index} className="flex items-center gap-1.5">
-                    <div className="w-1.5 h-1.5 rounded-full bg-blue-500 flex-shrink-0"></div>
+                    <div className="w-1.5 h-1.5 rounded-full bg-[#9a5b3c] dark:bg-[#c89472] flex-shrink-0"></div>
                     {name}
                   </div>
                 ))}

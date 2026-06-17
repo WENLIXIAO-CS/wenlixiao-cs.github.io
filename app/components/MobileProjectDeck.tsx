@@ -214,7 +214,7 @@ function CardContent({
   const tldr = project.points.find(p => p.startsWith('TL;DR'))?.replace('TL;DR: ', '');
 
   return (
-    <div className="h-full bg-white/45 dark:bg-white/[0.06] backdrop-blur-2xl backdrop-saturate-150 rounded-3xl shadow-[0_8px_40px_rgba(100,120,180,0.12),0_2px_8px_rgba(100,120,180,0.06)] dark:shadow-[0_8px_40px_rgba(0,0,0,0.3)] overflow-hidden flex flex-col border border-white/60 dark:border-white/[0.08]" style={{ borderTopColor: 'rgba(255,255,255,0.8)', borderLeftColor: 'rgba(255,255,255,0.7)' }}>
+    <div className="h-full bg-[#fbf9f4]/80 dark:bg-white/[0.06] backdrop-blur-md rounded-3xl shadow-[0_8px_40px_rgba(70,55,40,0.12),0_2px_8px_rgba(70,55,40,0.06)] dark:shadow-[0_8px_40px_rgba(0,0,0,0.3)] overflow-hidden flex flex-col border border-white/60 dark:border-white/[0.08]" style={{ borderTopColor: 'rgba(255,255,255,0.8)', borderLeftColor: 'rgba(255,255,255,0.7)' }}>
       {/* Video / Media */}
       <div className="relative flex-shrink-0" style={{ height: '38%' }}>
         {showVideo && videoSources ? (
@@ -260,7 +260,7 @@ function CardContent({
             {venues.map((v, i) => (
               <span
                 key={i}
-                className="text-[10px] bg-gradient-to-r from-blue-500/10 to-indigo-500/10 dark:from-blue-400/15 dark:to-indigo-400/15 text-blue-700 dark:text-blue-300 px-2 py-0.5 rounded-full font-semibold leading-tight border border-blue-200/30 dark:border-blue-400/10"
+                className="text-[10px] bg-[#9a5b3c]/10 dark:bg-[#c89472]/15 text-[#8a4f33] dark:text-[#d8a888] px-2 py-0.5 rounded-full font-semibold leading-tight border border-[#9a5b3c]/20 dark:border-[#c89472]/15"
               >
                 {v}
               </span>
@@ -311,7 +311,7 @@ function ActionPill({ href, label }: { href: string; label: string }) {
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="text-[11px] font-medium text-[#4a5568] dark:text-white/50 px-2.5 py-1 rounded-full bg-white/40 dark:bg-white/[0.06] backdrop-blur-sm border border-white/60 dark:border-white/[0.08] active:bg-white/70 dark:active:bg-white/10 transition-colors select-none"
+      className="text-[11px] font-medium text-[#4a5568] dark:text-white/50 px-2.5 py-1 rounded-full bg-[#f4f1ea]/85 dark:bg-white/[0.06] backdrop-blur-sm border border-white/60 dark:border-white/[0.08] active:bg-white/70 dark:active:bg-white/10 transition-colors select-none"
       onClick={(e) => e.stopPropagation()}
     >
       {label}

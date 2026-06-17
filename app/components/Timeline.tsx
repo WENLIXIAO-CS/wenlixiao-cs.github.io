@@ -115,7 +115,7 @@ export default function Timeline({ experiences, educations, services, compact }:
               <span
                 key={j}
                 title={item}
-                className="px-4 py-2 text-sm rounded-full bg-white/50 dark:bg-white/[0.06] backdrop-blur-sm text-[#4a5568] dark:text-white/50 border border-white/60 dark:border-white/[0.08]"
+                className="px-4 py-2 text-sm rounded-full bg-[#fbf9f4]/85 dark:bg-white/[0.06] backdrop-blur-sm text-[#4a5568] dark:text-white/50 border border-white/60 dark:border-white/[0.08]"
               >
                 {extractAbbreviation(item)}
               </span>
@@ -409,7 +409,7 @@ function VerticalTimeline({ nodes, color }: { nodes: NodeData[]; color: 'blue' |
             <div key={i} className="relative">
               {/* Dot on spine */}
               <div className="absolute -left-8 top-4">
-                <div className={`w-[10px] h-[10px] rounded-full ${c.dot} ring-[3px] ring-white/50 dark:ring-[#0a0c12]/50`} style={{ marginLeft: 6 }} />
+                <div className={`w-[10px] h-[10px] rounded-full ${c.dot} ring-[3px] ring-white/50 dark:ring-[#16130e]/50`} style={{ marginLeft: 6 }} />
                 {isPresent && (
                   <div className={`absolute inset-0 rounded-full ${c.dot} animate-ping opacity-30`} style={{ marginLeft: 6 }} />
                 )}
@@ -430,7 +430,7 @@ function TimelineCard({ node, compact }: { node: NodeData; compact?: boolean }) 
 
   return (
     <div
-      className="bg-white/50 dark:bg-white/[0.07] backdrop-blur-2xl backdrop-saturate-150 border border-white/60 dark:border-white/[0.08] rounded-2xl p-4 shadow-[0_4px_24px_rgba(100,120,180,0.08)] dark:shadow-[0_4px_24px_rgba(0,0,0,0.25)] hover:shadow-[0_8px_32px_rgba(100,120,180,0.14)] transition-shadow duration-300"
+      className="bg-[#fbf9f4]/85 dark:bg-white/[0.07] backdrop-blur-md border border-white/60 dark:border-white/[0.08] rounded-2xl p-4 shadow-[0_4px_24px_rgba(70,55,40,0.08)] dark:shadow-[0_4px_24px_rgba(0,0,0,0.25)] hover:shadow-[0_8px_32px_rgba(70,55,40,0.14)] transition-shadow duration-300"
       style={{ borderTopColor: 'rgba(255,255,255,0.8)', borderLeftColor: 'rgba(255,255,255,0.7)' }}
     >
       <div className="flex items-start gap-3">

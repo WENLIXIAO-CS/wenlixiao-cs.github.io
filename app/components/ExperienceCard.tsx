@@ -23,7 +23,7 @@ export default function ExperienceCard({
   const [imageError, setImageError] = useState(false);
 
   return (
-    <div className="w-full md:flex-none md:w-[360px] bg-white/45 dark:bg-white/[0.06] backdrop-blur-2xl backdrop-saturate-150 border border-white/60 dark:border-white/[0.08] p-6 rounded-2xl shadow-[0_4px_24px_rgba(100,120,180,0.08)] dark:shadow-[0_4px_24px_rgba(0,0,0,0.25)] hover:shadow-[0_8px_32px_rgba(100,120,180,0.14)] transition-shadow duration-300 snap-start" style={{ borderTopColor: 'rgba(255,255,255,0.8)', borderLeftColor: 'rgba(255,255,255,0.7)' }}>
+    <div className="w-full md:flex-none md:w-[360px] bg-[#fbf9f4]/80 dark:bg-white/[0.06] backdrop-blur-md border border-white/60 dark:border-white/[0.08] p-6 rounded-2xl shadow-[0_4px_24px_rgba(70,55,40,0.08)] dark:shadow-[0_4px_24px_rgba(0,0,0,0.25)] hover:shadow-[0_8px_32px_rgba(70,55,40,0.14)] transition-shadow duration-300 snap-start" style={{ borderTopColor: 'rgba(255,255,255,0.8)', borderLeftColor: 'rgba(255,255,255,0.7)' }}>
       <div className="flex h-full">
         <div className="w-16 flex flex-col items-center mr-4 flex-shrink-0">
           <div className="w-16 h-16 mb-3">
@@ -53,7 +53,7 @@ export default function ExperienceCard({
               <div className="text-sm text-gray-600 dark:text-gray-300 mt-1">
                 {advisor.split('\n').map((name, index) => (
                   <div key={index} className="flex items-center mt-0.5">
-                    <div className="w-1.5 h-1.5 rounded-full bg-blue-500 mr-2 flex-shrink-0"></div>
+                    <div className="w-1.5 h-1.5 rounded-full bg-[#9a5b3c] dark:bg-[#c89472] mr-2 flex-shrink-0"></div>
                     <p>{name}</p>
                   </div>
                 ))}

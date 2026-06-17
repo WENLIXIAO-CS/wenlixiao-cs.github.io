@@ -70,18 +70,14 @@ export default function Home() {
       </div>
 
       {/* Desktop: scrolling layout with glassmorphism */}
-      <div className="hidden md:block min-h-screen bg-[#e8ecf1] dark:bg-[#0a0c12] relative overflow-hidden">
-        {/* Background gradient orbs */}
+      <div className="hidden md:block min-h-screen bg-[#f4f1ea] dark:bg-[#16130e] relative overflow-hidden">
+        {/* Subtle warm paper wash */}
         <div className="fixed inset-0 pointer-events-none z-0">
-          <div className="absolute -top-32 -left-32 w-[500px] h-[500px] bg-blue-300/20 dark:bg-blue-500/10 rounded-full blur-[120px]" />
-          <div className="absolute top-[20%] right-0 w-[400px] h-[400px] bg-indigo-300/15 dark:bg-indigo-500/8 rounded-full blur-[100px]" />
-          <div className="absolute top-[50%] -left-20 w-[350px] h-[350px] bg-violet-300/10 dark:bg-violet-500/5 rounded-full blur-[100px]" />
-          <div className="absolute top-[70%] right-[10%] w-[300px] h-[300px] bg-cyan-300/10 dark:bg-cyan-500/5 rounded-full blur-[80px]" />
-          <div className="absolute bottom-0 left-[30%] w-[400px] h-[400px] bg-rose-300/8 dark:bg-rose-500/3 rounded-full blur-[100px]" />
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[500px] bg-[#e9e2d4]/40 dark:bg-[#241d12]/30 rounded-full blur-[160px]" />
         </div>
 
         {/* Navigation */}
-        <nav className="fixed top-0 w-full bg-white/40 dark:bg-[#0a0c12]/50 backdrop-blur-2xl backdrop-saturate-150 z-50 border-b border-white/30 dark:border-white/[0.06]">
+        <nav className="fixed top-0 w-full bg-[#f4f1ea]/85 dark:bg-[#16130e]/50 backdrop-blur-md z-50 border-b border-white/30 dark:border-white/[0.06]">
           <div className="max-w-[1200px] mx-auto px-6">
             <div className="flex justify-between items-center h-16">
               <div className="text-lg font-semibold text-[#1a2332] dark:text-white/90 tracking-tight">Wenli Xiao</div>
@@ -124,7 +120,7 @@ export default function Home() {
               <h2 className="text-2xl font-bold mb-12 text-[#1a2332] dark:text-white/90">News</h2>
             </ScrollReveal>
             <ScrollReveal delay={100}>
-              <div className="bg-white/45 dark:bg-white/[0.04] backdrop-blur-2xl backdrop-saturate-150 rounded-3xl border border-white/60 dark:border-white/[0.06] shadow-[0_8px_40px_rgba(100,120,180,0.08)] dark:shadow-[0_8px_40px_rgba(0,0,0,0.2)] p-8">
+              <div className="bg-[#fbf9f4]/80 dark:bg-white/[0.04] backdrop-blur-md rounded-3xl border border-white/60 dark:border-white/[0.06] shadow-[0_8px_40px_rgba(70,55,40,0.08)] dark:shadow-[0_8px_40px_rgba(0,0,0,0.2)] p-8">
                 <NewsCard items={newsItems} />
               </div>
             </ScrollReveal>
