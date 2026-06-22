@@ -14,8 +14,10 @@ export default function ProfileCard() {
 
       <div className="flex-1 text-center md:text-left">
         <h2 className="text-3xl md:text-4xl font-extrabold text-[#1a2332] dark:text-white/90 mb-2 md:mb-3">Wenli Xiao</h2>
-        <p className="hidden md:block text-lg md:text-xl font-medium text-[#4a5568] dark:text-white/50 mb-3 md:mb-4">Robotics PhD Student at CMU School of Computer Science</p>
         <p className="text-[#4a5568] dark:text-white/50 text-base md:text-lg leading-relaxed">
+          I am currently a Research Intern at <a href="https://www.pi.website/" target="_blank" rel="noopener noreferrer" className="underline text-[#4a5568] dark:text-white/50 hover:text-[#1a2332] dark:hover:text-white/80 transition-colors">Physical Intelligence</a>.
+        </p>
+        <p className="text-[#4a5568] dark:text-white/50 text-base md:text-lg leading-relaxed mt-4">
           I&apos;m a final-year PhD student at CMU Robotics, advised by <a href="https://www.gshi.me/" target="_blank" rel="noopener noreferrer" className="underline text-[#4a5568] dark:text-white/50 hover:text-[#1a2332] dark:hover:text-white/80 transition-colors">Prof. Guanya Shi</a>. My vision is to build scalable general intelligent robots in the real world. I am generally interested in dexterous manipulation and humanoid robots.
         </p>
         <p className="text-[#4a5568] dark:text-white/50 text-base md:text-lg leading-relaxed mt-4">

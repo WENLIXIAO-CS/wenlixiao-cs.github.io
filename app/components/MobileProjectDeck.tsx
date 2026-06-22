@@ -299,6 +299,7 @@ function CardContent({
           )}
           {project.video && <ActionPill href={project.video} label="Video" />}
           {project.twitter && <ActionPill href={project.twitter} label="Twitter" />}
+          {project.media && <ActionPill href={project.media} label="Media" />}
         </div>
       </div>
     </div>

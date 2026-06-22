@@ -154,6 +154,7 @@ export default function Home() {
                     code={project.code}
                     twitter={project.twitter}
                     pdf={project.pdf}
+                    media={project.media}
                     authors={project.authors}
                     role={project.role}
                     stars={getStars(project.code)}

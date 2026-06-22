@@ -4,6 +4,9 @@ interface NewsItem {
   date: string;
   content: string;
   href?: string;
+  logo?: string;
+  logoDark?: string;
+  suffix?: string;
 }
 
 interface NewsCardProps {
@@ -25,17 +28,46 @@ export default function NewsCard({ items }: NewsCardProps) {
                   href={item.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="underline hover:text-gray-900 dark:hover:text-white transition-colors"
+                  className="hover:text-gray-900 dark:hover:text-white transition-colors"
                 >
                   {item.content}
+                  {item.logo && <NewsLogo logo={item.logo} logoDark={item.logoDark} />}
+                  {item.suffix}
                 </a>
               ) : (
-                item.content
+                <>
+                  {item.content}
+                  {item.logo && <NewsLogo logo={item.logo} logoDark={item.logoDark} />}
+                  {item.suffix}
+                </>
               )}
             </div>
           </div>
         </li>
       ))}
     </ul>
+  );
+}
+
+function NewsLogo({ logo, logoDark }: { logo: string; logoDark?: string }) {
+  return (
+    <>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={logo}
+        alt=""
+        aria-hidden="true"
+        className={`inline-block ml-1.5 h-[1em] w-auto align-[-0.1em] ${logoDark ? 'dark:hidden' : ''}`}
+      />
+      {logoDark && (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+          src={logoDark}
+          alt=""
+          aria-hidden="true"
+          className="hidden dark:inline-block ml-1.5 h-[1em] w-auto align-[-0.1em]"
+        />
+      )}
+    </>
   );
 }

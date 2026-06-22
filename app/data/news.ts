@@ -2,9 +2,19 @@ export interface NewsItem {
   date: string;
   content: string;
   href?: string;
+  logo?: string;
+  logoDark?: string;
+  suffix?: string;
 }
 
 export const newsItems: NewsItem[] = [
+  {
+    date: "2026 Jun",
+    content: "Joined Physical Intelligence",
+    href: "https://www.pi.website/",
+    logo: "/images/pi-logo.png",
+    logoDark: "/images/pi-logo-dark.png"
+  },
   {
     date: "2026 Jun",
     content: "ENPIRE released!",

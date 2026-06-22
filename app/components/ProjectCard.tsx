@@ -11,6 +11,7 @@ interface ProjectCardProps {
   code?: string;
   twitter?: string;
   pdf?: string;
+  media?: string;
   authors?: string[];
   role?: string;
   stars?: number;
@@ -35,6 +36,7 @@ export default function ProjectCard({
   code,
   twitter,
   pdf,
+  media,
   authors,
   role,
   stars
@@ -199,6 +201,20 @@ export default function ProjectCard({
                 <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
               </svg>
               PDF
+            </a>
+          )}
+          {media && (
+            <a
+              href={media}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-600 dark:text-gray-400 hover:text-[#9a5b3c] dark:hover:text-[#c89472] transition-colors flex items-center gap-1.5"
+            >
+              <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"></path>
+                <path d="M18 14h-8M15 18h-5M10 6h8v4h-8V6z"></path>
+              </svg>
+              Media
             </a>
           )}
         </div>

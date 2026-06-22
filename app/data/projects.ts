@@ -14,6 +14,7 @@ export interface Project {
   code?: string;
   twitter?: string;
   pdf?: string;
+  media?: string;
   authors?: string[];
 }
 
@@ -32,6 +33,7 @@ export const projects: Project[] = [
     website: "https://research.nvidia.com/labs/gear/enpire/",
     pdf: "https://drive.google.com/drive/folders/1J8w1yQux9ODYqTNZ2ynOIFjerBIQtw1V?usp=sharing",
     twitter: "https://x.com/DrJimFan/status/2066921736369766762",
+    media: "https://arstechnica.com/ai/2026/06/ai-coding-agents-can-autonomously-direct-robot-training/",
     authors: ["Wenli Xiao*", "Jia Xie*", "Tonghe Zhang*", "Haotian Lin*", "Letian \"Max\" Fu", "Haoru Xue", "Jalen Lu", "Yi Yang", "Cunxi Dai", "Zi Wang", "Jimmy Wu", "Guanzhi Wang", "S. Shankar Sastry", "Ken Goldberg", "Linxi \"Jim\" Fan‡", "Yuke Zhu‡", "Guanya Shi‡"]
   },
   {
