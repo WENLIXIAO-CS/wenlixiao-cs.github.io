@@ -3,7 +3,6 @@
 import { useState, useEffect } from "react";
 import ProfileCard from "./components/ProfileCard";
 import ProjectCard from "./components/ProjectCard";
-import TabBar from "./components/TabBar";
 import Timeline from "./components/Timeline";
 import NewsCard from "./components/NewsCard";
 import ThemeToggle from "./components/ThemeToggle";
@@ -14,14 +13,6 @@ import { experiences, educations, services } from "./data/background";
 import { newsItems } from "./data/news";
 import starsData from "./data/stars.json";
 
-const projectTabs = [
-  { key: 'foundation', label: 'Foundation Models' },
-  { key: 'humanoid', label: 'Humanoid' },
-  { key: 'mobility', label: 'Mobility' },
-  { key: 'all', label: 'All' },
-];
-
-
 function getStars(codeUrl?: string): number | undefined {
   if (!codeUrl || !codeUrl.includes('github.com')) return undefined;
   const repoPath = codeUrl.split('github.com/')[1]?.replace(/\/$/, '');
@@ -31,7 +22,6 @@ function getStars(codeUrl?: string): number | undefined {
 const navSections = ['news', 'research', 'background'] as const;
 
 export default function Home() {
-  const [activeCategory, setActiveCategory] = useState('foundation');
   const [activeNav, setActiveNav] = useState('');
 
   useEffect(() => {
@@ -57,10 +47,6 @@ export default function Home() {
 
     return () => observers.forEach(o => o.disconnect());
   }, []);
-
-  const filteredProjects = activeCategory === 'all'
-    ? projects
-    : projects.filter(project => project.category === activeCategory);
 
   return (
     <>
@@ -133,15 +119,8 @@ export default function Home() {
             <ScrollReveal>
               <h2 className="text-2xl font-bold mb-12 text-[#1a2332] dark:text-white/90">Research Projects</h2>
             </ScrollReveal>
-            <ScrollReveal delay={100}>
-              <TabBar
-                tabs={projectTabs}
-                activeKey={activeCategory}
-                onTabChange={setActiveCategory}
-              />
-            </ScrollReveal>
             <div className="space-y-12">
-              {filteredProjects.map((project, i) => (
+              {projects.map((project, i) => (
                 <ScrollReveal key={project.id} delay={i < 3 ? i * 80 : 0}>
                   <ProjectCard
                     title={project.title}

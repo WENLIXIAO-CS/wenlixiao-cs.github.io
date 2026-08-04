@@ -1,8 +1,7 @@
 'use client';
 
-import { useState, useCallback } from 'react';
+import { useState } from 'react';
 import ProfileCard from './ProfileCard';
-import TabBar from './TabBar';
 import Timeline from './Timeline';
 import NewsCard from './NewsCard';
 import ThemeToggle from './ThemeToggle';
@@ -14,14 +13,6 @@ import starsData from '../data/stars.json';
 
 type MobileTab = 'projects' | 'about' | 'background';
 
-const projectTabs = [
-  { key: 'foundation', label: 'Foundation Models' },
-  { key: 'humanoid', label: 'Humanoid' },
-  { key: 'mobility', label: 'Mobility' },
-  { key: 'all', label: 'All' },
-];
-
-
 function getStars(codeUrl?: string): number | undefined {
   if (!codeUrl || !codeUrl.includes('github.com')) return undefined;
   const repoPath = codeUrl.split('github.com/')[1]?.replace(/\/$/, '');
@@ -30,24 +21,6 @@ function getStars(codeUrl?: string): number | undefined {
 
 export default function MobileLayout() {
   const [activeTab, setActiveTab] = useState<MobileTab>('projects');
-  const [activeCategory, setActiveCategory] = useState('foundation');
-
-
-  const categoryOrder = ['foundation', 'humanoid', 'mobility'];
-
-  const handleSwipeOverflow = useCallback((dir: 'left' | 'right') => {
-    if (activeCategory === 'all') return;
-    const idx = categoryOrder.indexOf(activeCategory);
-    if (dir === 'left' && idx < categoryOrder.length - 1) {
-      setActiveCategory(categoryOrder[idx + 1]);
-    } else if (dir === 'right' && idx > 0) {
-      setActiveCategory(categoryOrder[idx - 1]);
-    }
-  }, [activeCategory]);
-
-  const filteredProjects = activeCategory === 'all'
-    ? projects
-    : projects.filter(p => p.category === activeCategory);
 
   return (
     <div className="min-h-screen bg-[#f4f1ea] dark:bg-[#16130e] flex flex-col relative overflow-hidden">
@@ -72,17 +45,7 @@ export default function MobileLayout() {
         {activeTab === 'projects' && (
           <div className="px-4 pt-5">
             <h2 className="text-xl font-bold text-[#1a2332] dark:text-white/90 mb-4 tracking-tight">Research</h2>
-            <TabBar
-              tabs={projectTabs}
-              activeKey={activeCategory}
-              onTabChange={setActiveCategory}
-            />
-            <MobileProjectDeck
-              key={activeCategory}
-              projects={filteredProjects}
-              getStars={getStars}
-              onSwipeOverflow={handleSwipeOverflow}
-            />
+            <MobileProjectDeck projects={projects} getStars={getStars} />
           </div>
         )}
 
