@@ -5,9 +5,23 @@ export interface NewsItem {
   logo?: string;
   logoDark?: string;
   suffix?: string;
+  /**
+   * Inline link rendered between `content` and `suffix` (e.g. a journal name).
+   * For items that link only part of their text — use `href` to link the whole item.
+   */
+  link?: { text: string; href: string };
 }
 
 export const newsItems: NewsItem[] = [
+  {
+    date: "2026 Aug",
+    content: "SONIC was accepted by ",
+    link: {
+      text: "Science Robotics",
+      href: "https://www.science.org/doi/10.1126/scirobotics.aed4592"
+    },
+    suffix: "!"
+  },
   {
     date: "2026 Jun",
     content: "Joined Physical Intelligence",
