@@ -14,6 +14,10 @@ export interface NewsItem {
 
 export const newsItems: NewsItem[] = [
   {
+    date: "2026 Sep",
+    content: "ENPIRE was accepted by CoRL 2026!"
+  },
+  {
     date: "2026 Aug",
     content: "SONIC was accepted by ",
     link: {

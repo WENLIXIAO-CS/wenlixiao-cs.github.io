@@ -7,6 +7,8 @@ export interface Project {
   date: string;
   /** Pins the project above the rest, ahead of any newer non-featured work. */
   featured?: boolean;
+  /** Optional display order within featured projects, ahead of date-sorted entries. */
+  featuredOrder?: number;
   role: string;
   points: string[];
   website?: string;
@@ -27,9 +29,10 @@ const projectList: Project[] = [
     imageType: "gif",
     date: "2026-06",
     featured: true,
+    featuredOrder: 1,
     role: "Co-Lead",
     points: [
-      "In submission",
+      "CoRL 2026",
       "TL;DR: Physical Autoresearch on real-world Robot Fleet. ENPIRE lets coding agents autonomously improve robot manipulation policies through a closed-loop physical feedback system—automatic environment reset and verification, parallel robot rollouts, and evolutionary refinement—reaching a 99% success rate on challenging dexterous manipulation tasks."
     ],
     website: "https://research.nvidia.com/labs/gear/enpire/",
@@ -37,6 +40,24 @@ const projectList: Project[] = [
     twitter: "https://x.com/DrJimFan/status/2066921736369766762",
     media: "https://arstechnica.com/ai/2026/06/ai-coding-agents-can-autonomously-direct-robot-training/",
     authors: ["Wenli Xiao*", "Jia Xie*", "Tonghe Zhang*", "Haotian Lin*", "Letian \"Max\" Fu", "Haoru Xue", "Jalen Lu", "Yi Yang", "Cunxi Dai", "Zi Wang", "Jimmy Wu", "Guanzhi Wang", "S. Shankar Sastry", "Ken Goldberg", "Linxi \"Jim\" Fan‡", "Yuke Zhu‡", "Guanya Shi‡"]
+  },
+  {
+    id: 'aspire',
+    title: "ASPIRE: Agentic Skills Discovery for Robotics",
+    image: "/images/aspire.gif",
+    imageType: "gif",
+    date: "2026-07",
+    featured: true,
+    featuredOrder: 2,
+    role: "Co-Author",
+    points: [
+      "arXiv 2026",
+      "TL;DR: ASPIRE enables coding agents to discover reusable robot skills by inspecting execution feedback, debugging control programs, and evolving a growing skill library. Skills learned in simulation transfer to unseen tasks and real robots, reducing the cost of robot programming."
+    ],
+    arxiv: "https://arxiv.org/abs/2607.00272",
+    website: "https://research.nvidia.com/labs/gear/aspire/",
+    code: "https://github.com/NVlabs/ASPIRE",
+    authors: ["Runyu Lu*†", "Yubo Wu*", "Ethan Kou*", "Max Fu", "Wenli Xiao", "Ajay Mandlekar", "Yinzhen Xu", "Guanya Shi", "Ken Goldberg", "Ang Chen", "Mosharaf Chowdhury", "Yuke Zhu†", "Linxi \"Jim\" Fan†", "Guanzhi Wang†"]
   },
   {
     id: 'capx',
@@ -280,9 +301,11 @@ const projectList: Project[] = [
   }
 ];
 
-// Featured first, then newest first within each group.
+// Featured first, honoring explicit display order, then newest first within each group.
 // Ties on `date` keep the order above (Array#sort is stable).
 export const projects: Project[] = [...projectList].sort(
   (a, b) =>
-    Number(!!b.featured) - Number(!!a.featured) || b.date.localeCompare(a.date)
+    Number(!!b.featured) - Number(!!a.featured) ||
+    (a.featuredOrder ?? Infinity) - (b.featuredOrder ?? Infinity) ||
+    b.date.localeCompare(a.date)
 );

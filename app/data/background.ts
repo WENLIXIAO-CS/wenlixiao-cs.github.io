@@ -86,12 +86,13 @@ export const educations: Education[] = [
 
 export const services: Service[] = [
   {
-    title: "Conference Reviewer",
+    title: "Conference and Journal Reviewer",
     items: [
       "International Conference on Robotics and Automation (ICRA)",
       "IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)",
       "IEEE Robotics and Automation Letters (RA-L)",
-      "Conference on Robot Learning (CoRL)"
+      "Conference on Robot Learning (CoRL)",
+      "The International Journal of Robotics Research (IJRR)"
     ]
   }
 ];
