@@ -14,6 +14,15 @@ export interface NewsItem {
 
 export const newsItems: NewsItem[] = [
   {
+    date: "2026 Oct",
+    content: "Invited talk on agentic robotics and ENPIRE on the ",
+    link: {
+      text: "RoboPapers podcast",
+      href: "https://www.youtube.com/watch?v=BneHeMDaynI"
+    },
+    suffix: "."
+  },
+  {
     date: "2026 Sep",
     content: "ENPIRE was accepted by CoRL 2026!"
   },
