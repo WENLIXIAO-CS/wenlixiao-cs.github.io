@@ -5,7 +5,7 @@ export default function ProfileCard() {
     <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12">
       <div className="w-48 h-48 md:w-64 md:h-64 relative rounded-full overflow-hidden border-4 border-white/70 dark:border-white/10 shadow-[0_8px_32px_rgba(70,55,40,0.12)] dark:shadow-[0_8px_32px_rgba(0,0,0,0.3)]">
         <Image
-          src="/images/wenli-cmu.jpg"
+          src="/images/wenli-agi.png"
           alt="Wenli Xiao"
           fill
           className="object-cover"
